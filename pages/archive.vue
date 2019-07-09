@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-09 10:18:36
- * @LastEditTime: 2019-07-09 14:19:30
+ * @LastEditTime: 2019-07-09 23:18:44
  * @Description: 归档
  -->
 
@@ -71,6 +71,7 @@ export default {
   flex: 1;
   padding: 10px;
   background-color: var(--header-background-color);
+  z-index: 2;
   .header{
     display: flex;
     flex-direction: column;

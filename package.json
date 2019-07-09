@@ -19,6 +19,7 @@
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
     "nuxt": "^2.0.0",
+    "particles.js": "^2.0.0",
     "vue-amap": "^0.5.10"
   },
   "devDependencies": {

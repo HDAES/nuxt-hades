@@ -1,5 +1,6 @@
 <template>
   <div class="hades" :class="$store.state.theme.theme +'-theme'">
+    <!-- <background /> -->
     <my-header />
     <div class="wrapper">
       <div class="main">
@@ -22,6 +23,7 @@ import MyFooter from '@/components/hades/public/footer'
 import SiderBar from '@/components/hades/public/siderbar'
 import HotArticle from '@/components/hades/index/hotarticle'
 import MyTag from '@/components/hades/index/tag'
+// import Background from '@/components/common/background'
 export default {
   components: {
     MyHeader, MyFooter, SiderBar, HotArticle, MyTag
