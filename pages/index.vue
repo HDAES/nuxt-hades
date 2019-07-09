@@ -20,7 +20,6 @@ export default {
 
 <style lang='scss' scoped>
 .container{
-  width: 62% ;
-  color: red;
+  flex: 1;
 }
 </style>

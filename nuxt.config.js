@@ -13,8 +13,11 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_1098415_dthoqkttbjf.css' },
+      { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_1098415_e1b81bga0c4.css' },
       { rel: 'stylesheet', href: 'https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css' }
+    ],
+    script: [
+      { src: 'http://webapi.amap.com/maps?v=1.4.4&key=e5e77918efad8f49e124c3433561c0b7' }
     ]
   },
   /*
@@ -33,7 +36,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/vue-map'
   ],
   /*
   ** Nuxt.js modules

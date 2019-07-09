@@ -13,11 +13,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "koa": "^2.6.2",
-    "element-ui": "^2.4.11",
     "@nuxtjs/axios": "^5.3.6",
-    "nuxt": "^2.0.0"
+    "cross-env": "^5.2.0",
+    "element-ui": "^2.10.1",
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "nuxt": "^2.0.0",
+    "vue-amap": "^0.5.10"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

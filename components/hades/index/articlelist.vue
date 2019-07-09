@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-04 23:05:33
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-08 17:44:02
+ * @LastEditTime: 2019-07-09 11:01:40
  * @Description:文章列表
  -->
 
@@ -13,23 +13,18 @@
       class="article-item"
     >
       <div class="article-title ">
-        <span
-          style="display:inline-block"
-          class="animated title"
-        >{{ item.title }}</span>
+        <span style="display:inline-block" class="animated title">{{ item.title }}</span>
       </div>
-      <div class="article-content">
-        <div class="image-box">
-          <img
-            class="animated"
-            :src="item.image"
-            alt=""
-          >
+      <el-tooltip :content="item.title" placement="top-end" effect="light">
+        <div class="article-content">
+          <div class="image-box">
+            <img class="animated" :src="item.image" alt="">
+          </div>
+          <div class="des">
+            {{ item.des }}
+          </div>
         </div>
-        <div class="des">
-          {{ item.des }}
-        </div>
-      </div>
+      </el-tooltip>
       <div class="article-footer">
         <div class="_right">
           <i class="iconfont icon-ai-code" />
@@ -46,10 +41,17 @@
       </div>
     </div>
 
-    <div v-if="article.length !== 0" class="more" @click="more">
+    <div
+      v-if="article.length !== 0"
+      class="more"
+      @click="more"
+    >
       more
     </div>
-    <div v-if="article.length === 0" class="load-container">
+    <div
+      v-if="article.length === 0"
+      class="load-container"
+    >
       <div class="boxLoading" />
     </div>
   </div>
@@ -163,8 +165,8 @@ export default {
     -webkit-text-fill-color: transparent;
   }
 
-//加载更多按钮
-.more{
+  //加载更多按钮
+  .more {
     width: 100px;
     height: 30px;
     margin: 0 auto;
@@ -172,13 +174,13 @@ export default {
     line-height: 30px;
     border-radius: 5px;
     cursor: pointer;
-    color:var(--text-color);
+    color: var(--text-color);
     background-color: var(--content-color);
-}
-.more:hover{
+  }
+  .more:hover {
     background-color: var(--card-hover-color);
-}
-// 加载动画
+  }
+  // 加载动画
   .load-container {
     position: relative;
     width: 100px;

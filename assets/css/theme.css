@@ -9,6 +9,7 @@
     --mask-hover-color:rgba(0,0,0,.7);
     --border-color:#e6e6e6;
     --view-container:1200px;
+    --keyword-color:#F56A00;
   }
   .dark-theme {
     --content-color:  #1A1A1A;
@@ -20,6 +21,7 @@
     --mask-hover-color:rgba(255,255,255,.7);
     --border-color:#262626;
     --view-container:1200px;
+    --keyword-color:#F04143;
   }
   .a {
     color: var(--light-color);

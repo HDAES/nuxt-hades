@@ -6,9 +6,9 @@
         <span class="logo-text">hades.me</span>
       </a>
       <div class="tabs">
-        <router-link v-for="(item,index) in tabs" :key="index" :to="item.index">
-          <span>{{ item.name }}</span>
-        </router-link>
+        <nuxt-link v-for="(item,index) in tabs" :key="index" :to="item.index">
+          <span :class="route == item.index?'tabs_active':''">{{ item.name }}</span>
+        </nuxt-link>
       </div>
       <div class="search">
         <input type="text" placeholder="搜索文章" name>
@@ -31,14 +31,20 @@ export default {
           name: '归档'
         },
         {
-          index: '/',
+          index: '/about',
           name: '关于'
         },
         {
           index: '/',
           name: '留言墙'
         }
-      ]
+      ],
+      route: this.$route.path
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.route = to.path
     }
   }
 }
@@ -103,9 +109,13 @@ header {
         }
       }
       a:hover {
+        color: var(--header-logo-color);
         &::after {
           width: 100%;
         }
+      }
+      .tabs_active{
+        color: var(--header-logo-color);
       }
     }
     .search {
