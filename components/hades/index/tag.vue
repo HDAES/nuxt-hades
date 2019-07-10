@@ -1,7 +1,6 @@
 <template>
   <div
     class="tag"
-    :class="ceiling?'is_fixed':''"
   >
     <div class="tag-title">
       <i class="iconfont icon-biaoqian1 " />
@@ -17,30 +16,7 @@
 export default {
   data() {
     return {
-      ceiling: false,
       tags: ['vue', 'html', 'css', 'javascript']
-
-    }
-  },
-  mounted() { // 给window添加一个滚动滚动监听事件
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-
-  methods: {
-    handleScroll() { // 改变元素#searchBar的top值
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      const tagsetTop = document.querySelector('.tag').offsetTop
-      const hotHight = document.querySelector('.hot-artcile').clientHeight
-
-      if (tagsetTop - scrollTop < 80) {
-        this.ceiling = true
-      }
-      if (scrollTop - hotHight < 20) {
-        this.ceiling = false
-      }
     }
   }
 }
@@ -84,9 +60,5 @@ export default {
          background-color: var(--content-color);
       }
   }
-}
-.is_fixed {
-  position: fixed;
-  top: 60px;
 }
 </style>

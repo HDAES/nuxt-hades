@@ -23,7 +23,6 @@
 </template>
 
 <script>
-
 import Me from '@/components/hades/about/me'
 import Friend from '@/components/hades/about/friend'
 import Contacts from '@/components/hades/about/contacts'

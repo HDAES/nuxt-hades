@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-04 23:05:33
- * @LastEditors: HADES
- * @LastEditTime: 2019-07-09 23:26:23
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-07-10 16:09:28
  * @Description:文章列表
  -->
 
@@ -11,6 +11,7 @@
       v-for="(item,index) in article"
       :key="index"
       class="article-item"
+      @click="toArticle"
     >
       <div class="article-title ">
         <span style="display:inline-block" class="animated title">{{ item.title }}</span>
@@ -90,7 +91,9 @@ export default {
   },
   methods: {
     more() {
-
+    },
+    toArticle() {
+      this.$router.push('/article/1232')
     }
   }
 }

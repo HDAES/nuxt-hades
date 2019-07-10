@@ -1,6 +1,14 @@
+
 .page-enter-active, .page-leave-active {
-    transition: opacity .5s;
-  }
-  .page-enter, .page-leave-active {
-    opacity: 0;
-  }
+  transition: opacity .2s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+.v-note-panel{
+  border:none!important;
+  color: var(--header-logo-color)!important;
+}
+.scroll-style{
+  background-color: var(--header-background-color)!important;
+}

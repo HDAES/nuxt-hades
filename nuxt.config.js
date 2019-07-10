@@ -37,8 +37,9 @@ module.exports = {
   */
   plugins: [
     { src: '@/plugins/element-ui', ssr: true },
-    { src: '@/plugins/vue-map', ssr: false },
-    { src: '@/plugins/vue-particles', ssr: false }
+    { src: '@/plugins/vue-particles', ssr: false },
+    { src: '@/plugins/lazyload', ssr: false },
+    { src: '@/plugins/vue-mavon-editor', srr: false }
   ],
   /*
   ** Nuxt.js modules
