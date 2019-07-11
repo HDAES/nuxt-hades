@@ -1,14 +1,14 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-04 14:45:06
- * @LastEditTime: 2019-07-10 14:39:14
+ * @LastEditTime: 2019-07-11 15:56:23
  * @Description: 4个栏目
  -->
 
 <template>
   <div class="column">
     <div
-      v-for="(item,index) in column"
+      v-for="(item,index) in sort"
       :key="index"
       class="column-item"
     >
@@ -35,29 +35,12 @@
 export default {
   data() {
     return {
-      column: [{
-        name: '戒码一生',
-        image: 'http://qiniu.xl686.com/5d18ebaa2a941.png',
-        icon: 'icon-ai-code'
-      }, {
-        name: '吃喝玩乐',
-        image: require('@/assets/image/eat.jpg'),
-        icon: 'icon-heshuicopy-'
-      }, {
-        name: '我思我在',
-        image: require('@/assets/image/think.png'),
-        icon: 'icon-sikaoti'
-      }, {
-        name: '读万卷书',
-        image: require('@/assets/image/book.jpg'),
-        icon: 'icon-shu'
-      }]
+      sort: this.$store.state.data.sort
     }
   }
 }
 </script>
-
- <style lang="scss" scoped>
+<style lang="scss" scoped>
 .column {
   width: 100%;
   display: flex;

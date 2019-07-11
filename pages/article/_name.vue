@@ -1,8 +1,20 @@
 <template>
   <div class="article">
     <div class="article-header">
-      <div class="abc" />
+      <div class="label" />
       <span class="o_r">原创</span>
+      <div class="title">
+        123
+      </div>
+      <div class="des">
+        这里是描述
+      </div>
+      <div class="fot">
+        <i class="iconfont icon-ai-code" />
+        <span>戒码一生</span>
+        <span> 213</span>
+        次阅读
+      </div>
     </div>
     <no-ssr>
       <mavon-editor
@@ -37,7 +49,15 @@ export default {
   background-color: var(--header-background-color);
   .article-header {
       position: relative;
-    .abc {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+       padding: 50px 0 10px;
+    .label {
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 0;
       height: 0;
       border-bottom: 60px solid var(--header-background-color);
@@ -48,6 +68,20 @@ export default {
       top: 2px;
       left: 2px;
       color: var(--content-color);
+    }
+    .title{
+      color: var(--header-logo-color);
+      font-size: 1.5rem;
+    }
+    .des{
+        padding: 5px 0;
+         color: var(--text-color);
+    }
+    .fot{
+      color: var(--text-color);
+      span{
+        padding:0 5px;
+      }
     }
   }
 }

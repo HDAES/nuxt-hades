@@ -1,17 +1,17 @@
 <!--
  * @Date: 2019-07-04 23:05:33
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-10 16:09:28
+ * @LastEditTime: 2019-07-11 16:01:04
  * @Description:文章列表
  -->
 
 <template>
   <div class="article-list">
     <div
-      v-for="(item,index) in article"
+      v-for="(item,index) in articlelist"
       :key="index"
       class="article-item"
-      @click="toArticle"
+      @click="toArticle(item.id)"
     >
       <div class="article-title ">
         <span style="display:inline-block" class="animated title">{{ item.title }}</span>
@@ -22,35 +22,33 @@
             <img class="animated" :src="item.image" alt="">
           </div>
           <div class="des">
-            {{ item.des }}
+            {{ item.description }}
           </div>
         </div>
       </el-tooltip>
       <div class="article-footer">
         <div class="_right">
-          <i class="iconfont icon-ai-code" />
-          <span>戒码一生</span>
-          <span>331 次阅读</span>
-          <span>9 人喜欢</span>
-          <span>12 条评论 </span>
+          <i class="iconfont" :class="item.icon" />
+          <span>{{ item.name }}</span>
+          <span>{{ item.reading }} 次阅读</span>
         </div>
         <div class="_left">
           <i class="iconfont icon-shijian" />
-          <span>2018-10-24</span>
-          <span class="o_r">原创</span>
+          <span>{{ item.ceate_time.slice(0,10) }}</span>
+          <span class="o_r"> {{ original(item.original) }}</span>
         </div>
       </div>
     </div>
 
     <div
-      v-if="article.length !== 0"
+      v-if="articlelist.length !== 0"
       class="more"
       @click="more"
     >
       more
     </div>
     <div
-      v-if="article.length === 0"
+      v-if="articlelist.length === 0"
       class="load-container"
     >
       <div class="boxLoading" />
@@ -60,40 +58,24 @@
 
 <script>
 export default {
-  data() {
-    return {
-      article: [{
-        title: '《编译原理》',
-        image: require('../../../assets/image/eat.jpg'),
-        des: '你好啊你好啊你好啊你好啊'
-      }, {
-        title: 'JavaScript',
-        image: require('../../../assets/image/think.png'),
-        des: '你好啊你好啊你好啊你好啊'
-      }, {
-        title: 'NodeJS',
-        image: require('../../../assets/image/book.jpg'),
-        des: '你好啊你好啊你好啊你好啊'
-      }, {
-        title: '《编译原理》',
-        image: require('../../../assets/image/eat.jpg'),
-        des: '你好啊你好啊你好啊你好啊'
-      }, {
-        title: 'JavaScript',
-        image: require('../../../assets/image/think.png'),
-        des: '你好啊你好啊你好啊你好啊'
-      }, {
-        title: 'NodeJS',
-        image: require('../../../assets/image/book.jpg'),
-        des: '你好啊你好啊你好啊你好啊'
-      }]
+  props: {
+    articlelist: {
+      type: Array,
+      required: true
     }
   },
   methods: {
     more() {
     },
-    toArticle() {
-      this.$router.push('/article/1232')
+    original(e) {
+      if (e === 0) {
+        return '原创'
+      } else if (e === 1) {
+        return '转载'
+      }
+    },
+    toArticle(id) {
+      this.$router.push(`/article/${id}`)
     }
   }
 }

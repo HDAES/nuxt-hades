@@ -39,7 +39,8 @@ module.exports = {
     { src: '@/plugins/element-ui', ssr: true },
     { src: '@/plugins/vue-particles', ssr: false },
     { src: '@/plugins/lazyload', ssr: false },
-    { src: '@/plugins/vue-mavon-editor', srr: false }
+    { src: '@/plugins/vue-mavon-editor', srr: false },
+    { src: '@/plugins/axios', srr: false }
   ],
   /*
   ** Nuxt.js modules
@@ -58,6 +59,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+  // router: {
+  //   middleware: 'axios'
+  // },
   build: {
     transpile: [/^element-ui/],
     /*

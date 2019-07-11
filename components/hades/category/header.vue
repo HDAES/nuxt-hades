@@ -1,27 +1,23 @@
 <template>
   <div class="category-header">
-    <img v-lazy="data.image" alt="">
+    <img v-lazy="sort.sort[0].image" alt="">
     <div class="mask" />
-    <i class="iconfont icon" :class="data.icon" />
+    <i class="iconfont icon" :class="sort.sort[0].icon" />
     <div class="text">
-      {{ data.name }}
+      {{ sort.sort[0].name }}
     </div>
     <div class="totol">
-      共搜索到{{ data.num }}篇文章
+      共搜索到{{ sort.num }}篇文章
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      data: {
-        name: '戒码一生',
-        image: 'http://qiniu.xl686.com/5d18ebaa2a941.png',
-        icon: 'icon-ai-code',
-        num: '123'
-      }
+  props: {
+    sort: {
+      type: Object,
+      required: true
     }
   }
 }

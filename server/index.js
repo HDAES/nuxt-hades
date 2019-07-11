@@ -4,6 +4,9 @@ const { Nuxt, Builder } = require('nuxt')
 const app = new Koa()
 const config = require('../nuxt.config.js')
 
+const hadesIndex = require('./api/hades')
+const check = require('./check')
+
 // Import and Set Nuxt.js options
 config.dev = !(app.env === 'production')
 
@@ -24,6 +27,9 @@ async function start() {
     await nuxt.ready()
   }
 
+  app.use(hadesIndex)
+
+  app.use(check)
   app.use((ctx) => {
     ctx.status = 200
     ctx.respond = false // Bypass Koa's built-in response handling

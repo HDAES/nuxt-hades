@@ -1,7 +1,7 @@
 <template>
   <div class="category">
-    <my-header />
-    <article-list />
+    <my-header :sort="data" />
+    <article-list :articlelist="data.list" />
   </div>
 </template>
 
@@ -14,6 +14,26 @@ export default {
   head() {
     return {
       title: `${this.$route.params.name} | HADES`
+    }
+  },
+  computed: {
+    data() {
+      const articlelist = this.$store.state.data.articlelist.filter((item) => {
+        if (item.name === this.$route.params.name) {
+          return item
+        }
+      })
+      const sort = this.$store.state.data.sort.filter((item) => {
+        if (item.name === this.$route.params.name) {
+          return item
+        }
+      })
+      const obj = {
+        sort: sort,
+        num: articlelist.lenght,
+        list: articlelist
+      }
+      return obj
     }
   }
 }

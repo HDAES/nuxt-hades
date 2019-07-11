@@ -2,7 +2,7 @@
   <div class="container">
     <column />
     <scroll-card />
-    <article-list />
+    <article-list :articlelist="$store.state.data.articlelist" />
   </div>
 </template>
 
@@ -14,6 +14,15 @@ export default {
   layout: 'hades',
   components: {
     column, ScrollCard, ArticleList
+  },
+  async fetch({ store, params }) {
+    await Promise.all([
+      store.dispatch('data/asyncGetSort'),
+      store.dispatch('data/asyncGetArticleList')
+    ])
+  },
+  created() {
+    // console.log(this.articlelist)
   }
 }
 </script>
