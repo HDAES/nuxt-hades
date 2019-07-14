@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-05 13:57:51
- * @LastEditTime: 2019-07-09 10:09:49
+ * @LastEditTime: 2019-07-14 22:41:52
  * @Description:热门文章
  -->
 
@@ -14,7 +14,7 @@
     <div class="hot-list">
       <div v-for="(item,index) in hot" :key="index" class="hot-item">
         <span>{{ index+1 }}</span>
-        <router-link to="/">
+        <router-link :to="{path:`/article/${item.id}`}">
           {{ item.title }}
         </router-link>
       </div>
@@ -26,19 +26,17 @@
 export default {
   data() {
     return {
-      hot: [{
-        title: 'NodeJS'
-      }, {
-        title: 'JavaScript'
-      }, {
-        title: '微信小程序微信小程序微信小程序微信小程序微信小程序微信小程序微信小程序'
-      }, {
-        title: 'NodeJS'
-      }, {
-        title: 'JavaScript'
-      }, {
-        title: '微信小程序微信小程序微信小程序微信小程序微信小程序微信小程序微信小程序'
-      }]
+      hot: []
+    }
+  },
+  created() {
+    this.getHot()
+  },
+  methods: {
+    async getHot() {
+      await this.$axios.get('/api/hades/hot').then((res) => {
+        this.hot = res
+      })
     }
   }
 }

@@ -4,15 +4,15 @@
       <div class="label" />
       <span class="o_r">原创</span>
       <div class="title">
-        123
+        {{ articleData.title }}
       </div>
       <div class="des">
-        这里是描述
+        {{ articleData.description }}
       </div>
       <div class="fot">
-        <i class="iconfont icon-ai-code" />
-        <span>戒码一生</span>
-        <span> 213</span>
+        <i class="iconfont " :class="articleData.icon" />
+        <span>{{ articleData.name }}</span>
+        <span> {{ articleData.reading }}</span>
         次阅读
       </div>
     </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   layout: 'hades',
   data() {
@@ -38,7 +39,23 @@ export default {
       defaultOpen: 'preview',
       toolbarsFlag: false,
       boxShadow: false,
-      handbook: '#### how to use mavonEditor in nuxt.js'
+      handbook: '#### how to use mavonEditor in nuxt.js',
+      articleData: ''
+    }
+  },
+  // async asyncData(context) {
+  //   const data = await axios.post('/api/hades/article', { id: 7 })
+  //   return { articleDataproject: data }
+  // },
+  created() {
+    this.getArticle()
+  },
+  methods: {
+    async getArticle() {
+      await this.$axios.post('/api/hades/article', { id: this.$route.params.name }).then((res) => {
+        this.articleData = res
+        this.handbook = res.content
+      })
     }
   }
 }

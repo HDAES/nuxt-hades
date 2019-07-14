@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-10 14:55:41
- * @LastEditTime: 2019-07-10 15:38:15
+ * @LastEditTime: 2019-07-14 22:43:28
  * @Description:分类列表
  -->
 
@@ -20,7 +20,7 @@
         class="sort-item"
       >
         <i class="iconfont icon" :class="item.icon" />
-        <router-link to="/">
+        <router-link :to="{path:`/category/${item.name}`}">
           {{ item.name }}
         </router-link>
       </div>

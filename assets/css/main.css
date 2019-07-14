@@ -5,10 +5,17 @@
 .page-enter, .page-leave-active {
   opacity: 0;
 }
+.v-note-wrapper{
+  z-index: 1!important;
+}
 .v-note-panel{
   border:none!important;
   color: var(--header-logo-color)!important;
 }
 .scroll-style{
+  background-color: var(--header-background-color)!important;
+}
+.markdown-body pre,.hljs{
+  color: var(--header-logo-color)!important;
   background-color: var(--header-background-color)!important;
 }

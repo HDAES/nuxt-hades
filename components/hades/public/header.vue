@@ -33,11 +33,11 @@ export default {
         {
           index: '/about',
           name: '关于'
-        },
-        {
-          index: '/',
-          name: '留言墙'
         }
+        // {
+        //   index: '/',
+        //   name: '留言墙'
+        // }
       ],
       route: this.$route.path
     }
