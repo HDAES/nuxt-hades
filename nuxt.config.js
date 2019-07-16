@@ -58,7 +58,7 @@ module.exports = {
     proxy: true // Can be also an object with default options
   },
   proxy: {
-    '/api/': 'http://localhost:3001'
+    '/api/': 'https://blog.xl686.com'
   },
   /*
   ** Build configuration
