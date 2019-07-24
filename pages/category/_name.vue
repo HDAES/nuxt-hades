@@ -16,25 +16,24 @@ export default {
       title: `${this.$route.params.name} | HADES`
     }
   },
-  computed: {
-    data() {
-      const articlelist = this.$store.state.data.articlelist.filter((item) => {
-        if (item.name === this.$route.params.name) {
-          return item
-        }
-      })
-      const sort = this.$store.state.data.sort.filter((item) => {
-        if (item.name === this.$route.params.name) {
-          return item
-        }
-      })
-      const obj = {
-        sort: sort,
-        num: articlelist.lenght,
-        list: articlelist
+  async asyncData({ $axios, route }) {
+    const articleData = await $axios.get('/api/hades/articlelist')
+    const sortData = await $axios.get('/api/hades/sort')
+    const articlelist = articleData.filter((item) => {
+      if (item.name === route.params.name) {
+        return item
       }
-      return obj
+    })
+    const sort = sortData.filter((item) => {
+      if (item.name === route.params.name) {
+        return item
+      }
+    })
+    const obj = {
+      sort: sort,
+      list: articlelist
     }
+    return { data: obj }
   }
 }
 </script>

@@ -4,6 +4,7 @@ export default function ({ $axios, redirect }) {
   $axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', [
     'post'
   ])
+  $axios.defaults.baseURL = 'https://blog.xl686.com'
   $axios.onRequest((config) => {
 
   })
@@ -16,10 +17,10 @@ export default function ({ $axios, redirect }) {
     }
   })
 
-  $axios.onError((error) => {
-    const code = parseInt(error.response && error.response.status)
-    if (code >= 400) {
-      redirect('/400')
-    }
-  })
+  // $axios.onError((error) => {
+  //   const code = parseInt(error.response && error.response.status)
+  //   if (code >= 400) {
+  //      redirect('/400')
+  //   }
+  // })
 }

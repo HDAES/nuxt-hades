@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-04 14:45:06
- * @LastEditTime: 2019-07-11 15:56:23
+ * @LastEditTime: 2019-07-24 22:56:01
  * @Description: 4个栏目
  -->
 
@@ -14,7 +14,7 @@
     >
       <nuxt-link :to="{path:'/category/'+ item.name}">
         <img
-          v-lazy="item.image"
+          v-lazy="item.background"
           class="column-image"
           alt=""
         >

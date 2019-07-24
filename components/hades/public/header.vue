@@ -2,7 +2,7 @@
   <header>
     <div class="wrapper">
       <a href="/">
-        <img src="../../../assets/image/logo.png" alt="logo">
+        <img src="~static/image/logo.png" alt="logo">
         <span class="logo-text">hades.me</span>
       </a>
       <div class="tabs">

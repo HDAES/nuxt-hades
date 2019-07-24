@@ -7,7 +7,7 @@
       {{ sort.sort[0].name }}
     </div>
     <div class="totol">
-      共搜索到{{ sort.num }}篇文章
+      共搜索到{{ sort.list.length }}篇文章
     </div>
   </div>
 </template>
