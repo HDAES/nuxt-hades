@@ -33,11 +33,11 @@ export default {
         {
           index: '/about',
           name: '关于'
+        },
+        {
+          index: '/admin',
+          name: '后台管理系统'
         }
-        // {
-        //   index: '/',
-        //   name: '留言墙'
-        // }
       ],
       route: this.$route.path
     }

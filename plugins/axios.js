@@ -10,7 +10,7 @@ export default function ({ $axios, redirect }) {
   })
 
   $axios.onResponse((res) => {
-    if (res.data.code === 200) {
+    if (res.data.code >= 200 && res.data.code < 300) {
       return res.data.data
     } else {
       return 'err'

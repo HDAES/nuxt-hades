@@ -1,6 +1,6 @@
 <template>
   <div class="category-header">
-    <img v-lazy="sort.sort[0].image" alt="">
+    <img v-lazy="sort.sort[0].background" alt="">
     <div class="mask" />
     <i class="iconfont icon" :class="sort.sort[0].icon" />
     <div class="text">

@@ -5,4 +5,8 @@
 </template>
 
 <style>
+
+.default-layout{
+  height: 100%;
+}
 </style>

@@ -34,6 +34,9 @@ export default {
       list: articlelist
     }
     return { data: obj }
+  },
+  created() {
+    console.log(123)
   }
 }
 </script>
