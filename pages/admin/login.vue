@@ -1,6 +1,6 @@
 <template>
   <div class="admin-login">
-    <background class="bg" />
+    <!-- <background class="bg" /> -->
     <div class="login-box">
       <img class="qcode" src="~static/image/qcode.png" alt="">
       <div class="title">
@@ -32,16 +32,16 @@
           <div v-else>
             {{ scanSuccess }}
           </div>
-          <span v-if="scanSuccess!= ''" @click="qcode">刷新</span>
+          <span v-if="scanSuccess!= ''">刷新</span>
         </div>
       </el-dialog>
     </div>
   </div>
 </template>
 <script>
-import Background from '@/components/common/background'
+// import Background from '@/components/common/background'
 export default {
-  components: { Background },
+  // components: { Background },
   data() {
     return {
       userInfo: {
