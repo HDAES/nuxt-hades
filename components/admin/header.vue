@@ -1,20 +1,20 @@
 <!--
  * @Date: 2019-07-26 23:29:36
- * @LastEditors: HADES
- * @LastEditTime: 2019-07-27 00:24:55
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-07-27 15:03:02
  * @Description:    后台管理页面 头部组件
  -->
 
 <template>
   <div class="header">
     <div class="h_r">
-      <i class="el-icon-menu" />
+      <i class="el-icon-menu" @click="openSider" />
       <div class="slogin">
         后台管理系统
       </div>
     </div>
     <div class="h_l">
-      <i class="iconfont icon-quanping" />
+      <i class="iconfont icon-quanping" @click="handleFullScreen" />
       <el-badge is-dot>
         <i class="el-icon-bell" />
       </el-badge>
@@ -45,6 +45,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isCollapse: false
+    }
+  },
   methods: {
     // 下拉菜单触发事件
     handleCommand(command) {
@@ -57,6 +62,35 @@ export default {
 
           break
       }
+    },
+    openSider() {
+      this.isCollapse = !this.isCollapse
+      this.$bus.$emit('collapse', this.isCollapse)
+    },
+    // 全屏按钮
+    handleFullScreen() {
+      const element = document.documentElement
+      if (this.fullscreen) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        }
+      } else if (element.requestFullscreen) {
+        element.requestFullscreen()
+      } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen()
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen()
+      } else if (element.msRequestFullscreen) {
+        // IE11
+        element.msRequestFullscreen()
+      }
+      this.fullscreen = !this.fullscreen
     }
   }
 }
@@ -64,6 +98,8 @@ export default {
 
 <style lang='scss' scoped>
     .header{
+        position: fixed;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -71,6 +107,7 @@ export default {
         padding: 0 20px;
         background: #242f42;
         color: #FFFFFF;
+        z-index: 999;
         .h_r{
             display: flex;
             i{
@@ -91,6 +128,7 @@ export default {
             .icon-quanping{
                 font-size: 28px;
                 padding-right: 20px;
+                cursor: pointer;
             }
             .el-icon-bell{
                 font-size: 28px;
@@ -104,6 +142,7 @@ export default {
             }
             .name{
                 color: #FFFFFF;
+                cursor: pointer;
                 a:hover{
                     text-decoration: none;
                 }

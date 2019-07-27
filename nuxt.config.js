@@ -40,7 +40,8 @@ module.exports = {
     { src: '@/plugins/vue-particles', ssr: false },
     { src: '@/plugins/lazyload', ssr: false },
     { src: '@/plugins/vue-mavon-editor', srr: false },
-    { src: '@/plugins/axios', srr: false }
+    { src: '@/plugins/axios', srr: false },
+    { src: '@/plugins/bus', srr: false }
   ],
   /*
   ** Nuxt.js modules
