@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:29:36
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-27 15:03:02
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-07-29 00:20:44
  * @Description:    后台管理页面 头部组件
  -->
 
@@ -119,6 +119,9 @@ export default {
             .slogin{
                 padding-left: 20px;
                 font-size: 26px;
+            }
+            .el-icon-menu{
+              cursor: pointer;
             }
         }
         .h_l{

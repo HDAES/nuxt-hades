@@ -1,44 +1,33 @@
 <template>
   <div class="sider">
-    <el-menu background-color="#324157" class="sider-el" text-color="#FFFFFF" :collapse="isCollapse">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location" />
-          <span slot="title">导航一</span>
+    <el-menu
+      background-color="#324157"
+      class="sider-el"
+      text-color="#FFFFFF"
+      :collapse="isCollapse"
+      router
+    >
+      <template v-for="item in siderList">
+        <template v-if="item.subs">
+          <el-submenu :key="item.index" :index="item.index">
+            <template slot="title">
+              <i class="el-icon-location" />
+              <span slot="title">{{ item.name }}</span>
+            </template>
+            <template v-for="items in item.subs">
+              <el-menu-item :key="items.index" :index="items.index">
+                {{ items.name }}
+              </el-menu-item>
+            </template>
+          </el-submenu>
         </template>
-        <el-menu-item-group>
-          <span slot="title">分组一</span>
-          <el-menu-item index="1-1">
-            选项1
+        <template v-else>
+          <el-menu-item :key="item.index" :index="item.index">
+            <i class="el-icon-menu" />
+            <span slot="title">{{ item.name }}</span>
           </el-menu-item>
-          <el-menu-item index="1-2">
-            选项2
-          </el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">
-            选项3
-          </el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">
-            选项1
-          </el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu" />
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document" />
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting" />
-        <span slot="title">导航四</span>
-      </el-menu-item>
+        </template>
+      </template>
     </el-menu>
   </div>
 </template>
@@ -47,6 +36,42 @@
 export default {
   data() {
     return {
+      siderList: [
+        {
+          icon: 'el-icon-location',
+          name: '系统中心',
+          index: 'system'
+        },
+        {
+          icon: 'el-icon-location',
+          name: '微信小程序',
+          index: '1',
+          subs: [
+            {
+              icon: 'el-icon-location',
+              name: '基本信息',
+              index: '1-1'
+            },
+            {
+              icon: 'el-icon-location',
+              name: '个人中心',
+              index: '1-2'
+            }
+          ]
+        },
+        {
+          icon: '123',
+          name: '文章管理',
+          index: '2',
+          subs: [
+            {
+              icon: '123',
+              name: '所有博文',
+              index: '2-1'
+            }
+          ]
+        }
+      ],
       isCollapse: false
     }
   },
@@ -59,11 +84,16 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-    .sider{
-        width: 50%;
-        .sider-el{
-
-            transition: all .5s;
-        }
-    }
+.sider {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  overflow-y: hidden;
+  .sider-el:not(.el-menu--collapse) {
+    width: 250px;
+  }
+  .el-menu {
+    height: 100%;
+  }
+}
 </style>
