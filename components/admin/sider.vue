@@ -50,12 +50,12 @@ export default {
             {
               icon: 'el-icon-location',
               name: '基本信息',
-              index: '1-1'
+              index: 'blog'
             },
             {
               icon: 'el-icon-location',
               name: '个人中心',
-              index: '1-2'
+              index: '1-1'
             }
           ]
         },
@@ -85,10 +85,6 @@ export default {
 
 <style lang='scss' scoped>
 .sider {
-  position: absolute;
-  top: 70px;
-  bottom: 0;
-  overflow-y: hidden;
   .sider-el:not(.el-menu--collapse) {
     width: 250px;
   }
