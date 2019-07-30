@@ -13,7 +13,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_1098415_au4nt24m4r.css' },
+      { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_1098415_gqj1uzp0on.css' },
       { rel: 'stylesheet', href: 'https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css' }
     ],
     script: [
@@ -59,9 +59,8 @@ module.exports = {
   /*
   ** Build configuration
   */
-  // router: {
-  //   middleware: 'axios'
-  // },
+  router: {
+  },
   build: {
     transpile: [/^element-ui/],
     /*

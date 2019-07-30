@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-29 15:18:46
- * @LastEditTime: 2019-07-29 23:35:27
+ * @LastEditTime: 2019-07-30 17:40:05
  * @Description:    标签页组件
  -->
 
@@ -9,7 +9,7 @@
   <div class="tags">
     <div class="tags-list">
       <el-tag
-        v-for="tag in tags"
+        v-for="(tag) in tags"
         :key="tag"
         closable
         :effect="tag == $route.name?'dark':'plain'"
@@ -49,6 +49,7 @@ export default {
   },
   watch: {
     $route(newValue, oldValue) {
+      console.log(newValue)
       if (this.tags.indexOf(newValue.name) === -1) {
         this.tags.push(newValue.name)
       }
@@ -57,7 +58,9 @@ export default {
   created() {
     this.tags.push(this.$route.name)
   },
+
   methods: {
+
     handleClose(e) {
       if (this.tags.length > 1) {
         this.tags.splice(this.tags.indexOf(e), 1)

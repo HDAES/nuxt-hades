@@ -9,21 +9,37 @@
     >
       <template v-for="item in siderList">
         <template v-if="item.subs">
-          <el-submenu :key="item.index" :index="item.index">
+          <el-submenu
+            :key="item.index"
+            :index="item.index"
+          >
             <template slot="title">
-              <i class="el-icon-location" />
+              <i
+                :class="item.icon"
+                class="iconfont"
+              />
               <span slot="title">{{ item.name }}</span>
             </template>
             <template v-for="items in item.subs">
-              <el-menu-item :key="items.index" :index="items.index">
+              <el-menu-item
+                :key="items.index"
+                :index="items.index"
+              >
                 {{ items.name }}
               </el-menu-item>
             </template>
           </el-submenu>
         </template>
         <template v-else>
-          <el-menu-item :key="item.index" :index="item.index">
-            <i class="el-icon-menu" />
+          <el-menu-item
+            :key="item.index"
+            :index="item.index"
+            @click="to(item)"
+          >
+            <i
+              :class="item.icon"
+              class="iconfont"
+            />
             <span slot="title">{{ item.name }}</span>
           </el-menu-item>
         </template>
@@ -38,36 +54,48 @@ export default {
     return {
       siderList: [
         {
-          icon: 'el-icon-location',
+          icon: 'el-icon-info',
           name: '系统中心',
-          index: 'system'
+          index: '/admin/system'
         },
         {
-          icon: 'el-icon-location',
+          icon: 'icon-wechat-miniprogram',
           name: '微信小程序',
           index: '1',
           subs: [
             {
-              icon: 'el-icon-location',
               name: '基本信息',
-              index: 'blog'
+              index: '/admin/weapp/info'
             },
             {
-              icon: 'el-icon-location',
-              name: '个人中心',
-              index: '1-1'
+              name: '轮播图管理',
+              index: '/admin/weapp/carousel'
+            }, {
+              name: '设置',
+              index: '/admin/weapp/setting'
             }
           ]
         },
         {
-          icon: '123',
+          icon: 'el-icon-document',
           name: '文章管理',
           index: '2',
           subs: [
             {
-              icon: '123',
               name: '所有博文',
-              index: '2-1'
+              index: '/admin/blog/all'
+            },
+            {
+              name: '种类',
+              index: '/admin/blog/sort'
+            },
+            {
+              name: '详情',
+              index: '/admin/blog/details'
+            },
+            {
+              name: '编辑',
+              index: '/admin/blog/edit'
             }
           ]
         }
@@ -79,6 +107,11 @@ export default {
     this.$bus.$on('collapse', (msg) => {
       this.isCollapse = msg
     })
+  },
+  methods: {
+    to(e) {
+
+    }
   }
 }
 </script>
@@ -90,6 +123,13 @@ export default {
   }
   .el-menu {
     height: 100%;
+    .iconfont {
+      font-size: 24px;
+      padding-right: 5px;
+    }
+    .icon-wechat-miniprogram {
+      font-size: 22px;
+    }
   }
 }
 </style>

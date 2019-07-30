@@ -35,7 +35,7 @@ export default {
           name: '关于'
         },
         {
-          index: '/admin',
+          index: '/admin/system',
           name: '后台管理系统'
         }
       ],
