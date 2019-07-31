@@ -4,7 +4,8 @@ export default function ({ $axios, redirect }) {
   $axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', [
     'post'
   ])
-  $axios.defaults.baseURL = 'https://blog.xl686.com'
+  // $axios.defaults.baseURL = 'https://blog.xl686.com'
+  $axios.defaults.baseURL = 'http://localhost:3001'
   $axios.onRequest((config) => {
 
   })
