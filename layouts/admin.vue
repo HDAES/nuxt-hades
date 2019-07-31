@@ -6,11 +6,9 @@
       <v-sider />
       <div class="content">
         <v-tags />
-        <nuxt />
+        <nuxt class="scroll" />
       </div>
     </div>
-
-    <nuxt />
   </div>
 </template>
 
@@ -38,6 +36,14 @@ export default {
       .content{
         position: relative;
         width: 100%;
+        .scroll{
+          position: absolute;
+          top: 50px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          overflow: scroll;
+        }
       }
     }
   }

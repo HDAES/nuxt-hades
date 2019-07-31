@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:29:36
- * @LastEditors: HADES
- * @LastEditTime: 2019-07-29 00:20:44
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-07-31 15:27:16
  * @Description:    后台管理页面 头部组件
  -->
 
@@ -47,7 +47,7 @@
 export default {
   data() {
     return {
-      isCollapse: false
+      isCollapse: false // false展开  true 收起
     }
   },
   methods: {
