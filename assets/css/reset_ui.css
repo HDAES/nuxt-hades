@@ -1,0 +1,13 @@
+/* 表格表头 */
+.el-tabler th .cell{
+  font-weight: 600;
+}
+/* 表格内容 */
+.el-table td .cell{
+  color: #777777;
+}
+
+
+.v-note-wrapper .v-note-panel {
+  max-height: 500px;
+}

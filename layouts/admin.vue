@@ -21,7 +21,8 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss' >
+@import '@/assets/css/reset_ui.css';
   .admin{
     position: absolute;
     top: 0;
@@ -42,7 +43,7 @@ export default {
           bottom: 0;
           left: 0;
           right: 0;
-          overflow: scroll;
+          overflow-y: scroll;
         }
       }
     }

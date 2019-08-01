@@ -1,5 +1,4 @@
 import api from '@/static/api'
-
 const state = () => ({
   allBlog: []
 })
