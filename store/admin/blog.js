@@ -1,18 +1,26 @@
 import api from '@/static/api'
 const state = () => ({
-  allBlog: []
+  allBlog: [],
+  blogSort: []
 })
 
 const mutations = {
-  getBlog(state, payload) {
+  saveBlog(state, payload) {
     state.allBlog = payload
+  },
+  saveBlogSort(state, payload) {
+    state.blogSort = payload
   }
 }
 
 const actions = {
   async asyncGetBlog({ commit }) {
     const blog = await this.$axios.get(api.getAllBlog)
-    commit('getBlog', blog)
+    commit('saveBlog', blog)
+  },
+  async getBlogSort({ commit }) {
+    const sort = await this.$axios.get(api.getSort)
+    commit('saveBlogSort', sort)
   }
 }
 

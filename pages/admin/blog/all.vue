@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-01 16:19:21
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-05 22:49:48
  * @Description: 所有博客
  -->
 
@@ -21,7 +21,7 @@
             批量删除
           </el-button>
           <el-input v-model="filterkey" class="filter_input" placeholder="请输入内容" />
-          <el-button size="small" type="primary" icon="el-icon-delete" class="search_button">
+          <el-button size="small" type="primary" icon="el-icon-search" class="search_button">
             搜索
           </el-button>
         </div>
@@ -155,7 +155,11 @@ export default {
   },
   computed: {
     blogData() {
-      return this.$store.state.blog.allBlog
+      return this.$store.state.blog.allBlog.filter((item) => {
+        if ((item.title).indexOf(this.filterkey) >= 0) {
+          return item
+        }
+      })
     }
   },
   async fetch({ store, params }) {
