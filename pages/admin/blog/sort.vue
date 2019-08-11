@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-05 23:22:58
+ * @LastEditTime: 2019-08-11 23:27:09
  * @Description: 种类
  -->
 
@@ -27,10 +27,10 @@
         </div>
         <div>
           <el-tooltip effect="dark" content="添加" placement="top-end">
-            <el-button type="primary" icon="el-icon-plus" />
+            <el-button type="primary" icon="el-icon-plus" @click="addBtn" />
           </el-tooltip>
           <el-tooltip effect="dark" content="刷新" placement="top-end">
-            <el-button type="primary" icon="el-icon-refresh" />
+            <el-button type="primary" icon="el-icon-refresh" @click="refreshBtn" />
           </el-tooltip>
         </div>
       </div>
@@ -66,9 +66,17 @@
             <el-button
               type="text"
               size="small"
-              @click="edit(scope)"
+              @click="editBtn(scope)"
             >
               编辑
+            </el-button>
+            <el-button
+              type="text"
+              size="small"
+              style="color:red"
+              @click="deleteBtn(scope)"
+            >
+              删除
             </el-button>
           </template>
         </el-table-column>
@@ -81,7 +89,7 @@
       >
         <el-form label-position="right" label-width="70px">
           <el-form-item label="ID：">
-            <el-input v-model="dialogData.id" disabled />
+            <el-input v-model="dialogData.id" disabled placeholder="ID自动生成" />
           </el-form-item>
           <el-form-item
             label="分类："
@@ -94,7 +102,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+          <el-button type="primary" @click="submit">确 定</el-button>
         </span>
       </el-dialog>
     </div>
@@ -102,6 +110,7 @@
 </template>
 
 <script>
+import api from '@/static/api'
 export default {
   layout: 'admin',
   data() {
@@ -129,9 +138,38 @@ export default {
     ])
   },
   methods: {
-    edit(e) {
+    editBtn(e) {
       this.dialogVisible = true
       this.dialogData = e.row
+    },
+    // 添加按钮
+    addBtn() {
+      this.dialogVisible = true
+      this.dialogData = {
+        id: '',
+        sort: ''
+      }
+    },
+    // 刷新按钮
+    refreshBtn() {
+      this.$store.dispatch('blog/getBlogSort')
+    },
+    // 删除按钮
+    deleteBtn(e) {
+      console.log(e.row.id)
+      this.$axios.post(api.deleteSort, { id: e.row.id })
+      this.refreshBtn()
+    },
+    // 提交方法
+    submit() {
+      console.log(this.dialogData)
+      if (this.dialogData.id === '') {
+        this.$axios.post(api.inSort, { sort: this.dialogData.sort })
+      } else {
+        this.$axios.post(api.upDataSort, this.dialogData)
+      }
+      this.dialogVisible = false
+      this.refreshBtn()
     }
   }
 }

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-05 22:49:48
+ * @LastEditTime: 2019-08-11 22:47:26
  * @Description: 所有博客
  -->
 
@@ -55,7 +55,7 @@
         />
         <el-table-column
           label="作者"
-          width="70"
+          width="100"
           prop="author"
         />
         <el-table-column
@@ -79,7 +79,6 @@
         />
         <el-table-column
           label="显示"
-          width="80"
           align="center"
         >
           <template slot-scope="scope">
@@ -97,7 +96,7 @@
         </el-table-column>
         <el-table-column
           label="博文"
-          width="100"
+
           align="center"
         >
           <template slot-scope="scope">
@@ -107,11 +106,13 @@
           </template>
         </el-table-column>
         <el-table-column
+          fixed="right"
           label="上传时间"
           prop="ceate_time"
           :formatter="time"
         />
         <el-table-column
+          fixed="right"
           label="更新时间"
           prop="updata_time"
           :formatter="time"
