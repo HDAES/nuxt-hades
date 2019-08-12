@@ -1,7 +1,14 @@
+/*
+ * @Date: 2019-08-05 22:42:36
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-12 21:48:35
+ * @Description:api 接口
+ */
 import api from '@/static/api'
 const state = () => ({
   allBlog: [],
-  blogSort: []
+  blogSort: [],
+  blogDetails: []
 })
 
 const mutations = {
@@ -10,6 +17,9 @@ const mutations = {
   },
   saveBlogSort(state, payload) {
     state.blogSort = payload
+  },
+  saveBlogDetails(state, payload) {
+    state.blogDetails = payload
   }
 }
 
@@ -21,6 +31,10 @@ const actions = {
   async getBlogSort({ commit }) {
     const sort = await this.$axios.get(api.getSort)
     commit('saveBlogSort', sort)
+  },
+  async getBlogDetails({ commit }) {
+    const details = await this.$axios.get(api.getBlogDetails)
+    commit('saveBlogDetails', details)
   }
 }
 

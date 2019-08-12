@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-11 23:27:09
+ * @LastEditTime: 2019-08-12 23:07:52
  * @Description: 种类
  -->
 
@@ -37,7 +37,7 @@
 
       <el-table
         v-loading="loading"
-        :data="blogData"
+        :data="blogData.slice((page-1)*size,(page)*size)"
         stripe
         highlight-current-row
         element-loading-text="拼命加载中"
@@ -81,7 +81,18 @@
           </template>
         </el-table-column>
       </el-table>
-
+      <!-- 分页 -->
+      <el-pagination
+        class="pagination"
+        background
+        layout="prev, pager, next"
+        :page-size="size"
+        :total="blogData.length"
+        @prev-click="paginationBtn"
+        @next-click="paginationBtn"
+        @current-change="paginationBtn"
+      />
+      <!-- 弹出编辑框 -->
       <el-dialog
         title="编辑"
         :visible.sync="dialogVisible"
@@ -119,17 +130,18 @@ export default {
       value: 100,
       loading: false,
       dialogVisible: false, // 填出框
-      dialogData: ''
+      dialogData: '',
+      page: 1,
+      size: 5
     }
   },
   computed: {
     blogData() {
-      return this.$store.state.blog.blogSort
-      // .filter((item) => {
-      //   if ((item.title).indexOf(this.filterkey) >= 0) {
-      //     return item
-      //   }
-      // })
+      return this.$store.state.blog.blogSort.filter((item) => {
+        if ((item.sort.toUpperCase()).indexOf(this.filterkey.toUpperCase()) >= 0) {
+          return item
+        }
+      })
     }
   },
   async fetch({ store, params }) {
@@ -152,7 +164,9 @@ export default {
     },
     // 刷新按钮
     refreshBtn() {
-      this.$store.dispatch('blog/getBlogSort')
+      setTimeout(() => {
+        this.$store.dispatch('blog/getBlogSort')
+      }, 500)
     },
     // 删除按钮
     deleteBtn(e) {
@@ -164,12 +178,17 @@ export default {
     submit() {
       console.log(this.dialogData)
       if (this.dialogData.id === '') {
-        this.$axios.post(api.inSort, { sort: this.dialogData.sort })
+        delete this.dialogData.id
+        this.$axios.post(api.inSort, this.dialogData)
       } else {
         this.$axios.post(api.upDataSort, this.dialogData)
       }
-      this.dialogVisible = false
       this.refreshBtn()
+      this.dialogVisible = false
+    },
+    // 上一页,下一页
+    paginationBtn(e) {
+      this.page = e
     }
   }
 }
@@ -196,6 +215,10 @@ export default {
           margin-left: 15px;
         }
       }
+    }
+    .pagination{
+      padding: 20px 10px 10px;
+      text-align: right;
     }
   }
 }
