@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-12 23:17:16
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-13 17:55:44
  * @Description: 详情
  -->
 
@@ -82,6 +82,22 @@
           width="100"
           align="center"
         />
+        <el-table-column
+          label="图片"
+          width="100"
+          align="center"
+        >
+          <template slot-scope="scope">
+            <div v-if="scope.row.image" @click="upload(scope.row)">
+              <el-image :src="scope.row.image" />
+            </div>
+            <div v-else>
+              <el-button type="text" style="color:#FF6100" @click="upload(scope.row)">
+                上 传
+              </el-button>
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column
           label="Is_原创"
           prop="original"
@@ -203,6 +219,27 @@
           <el-button type="primary" @click="submit">确 定</el-button>
         </span>
       </el-dialog>
+      <!-- 弹出图片放大 -->
+      <el-dialog title="图片" :visible.sync="dialoUpload" width="40%">
+        <el-image :src="uploadImage" width="100%" alt="" />
+        <br>
+        <el-upload
+          id="upload"
+          action="http://localhost:3001/api/admin/wechat/upload"
+          :headers="{
+            'enctype':'multipart/form-data'
+          }"
+          :on-error="handleError"
+          :on-success="handleSuccess"
+        >
+          <el-button size="small" type="primary">
+            点击上传
+          </el-button>
+        </el-upload>
+        <span slot="footer">
+          <el-button type="primary" @click="changeImage">修改</el-button>
+        </span>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -216,11 +253,14 @@ export default {
       filterkey: '', // 筛选关键词
       value: 100,
       loading: false,
-      dialogVisible: false, // 填出框
+      dialogVisible: false, // 弹出框
+      dialoUpload: false, // 图片放大
       dialogData: '',
       blogSort: this.$store.state.blog.blogSort,
       size: 7,
-      page: 1
+      page: 1,
+      uploadImage: '',
+      uploadId: ''
     }
   },
   computed: {
@@ -314,6 +354,40 @@ export default {
         return '转载'
       }
       // console.log(e.original)
+    },
+    // 上传图片事件
+    upload(e) {
+      this.dialoUpload = true
+      this.uploadImage = e.image
+      this.uploadId = e.id
+    },
+    // 修改图片事件
+    changeImage() {
+      const options = {
+        id: this.uploadId,
+        image: this.uploadImage
+      }
+      this.$axios.post(api.uploadImage, options).then((res) => {
+        console.log(res)
+        this.dialoUpload = false
+        this.refreshBtn()
+      })
+    },
+    // 上传图片失败返回
+    handleError() {
+      this.$notify.error({
+        title: '上传失败',
+        message: '图片上传失败'
+      })
+    },
+    // 上传图片成功
+    handleSuccess(res) {
+      if (res.code === -1) {
+        console.log(res.msg)
+      } else {
+        this.uploadImage = res.msg
+      }
+      console.log(res)
     }
   }
 }

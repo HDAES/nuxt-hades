@@ -1,3 +1,9 @@
+<!--
+ * @Author: HADES
+ * @Date: 2019-07-30 11:10:46
+ * @LastEditTime: 2019-08-13 16:53:52
+ * @Description:
+ -->
 <template>
   <div class="sider">
     <el-menu
@@ -96,6 +102,20 @@ export default {
             {
               name: '编辑',
               index: '/admin/blog/edit'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-s-platform',
+          name: 'PC站管理',
+          index: '3',
+          subs: [
+            {
+              name: '栏目管理',
+              index: '/admin/pc/column'
+            },
+            {
+              name: '栏目内容'
             }
           ]
         }

@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-29 15:18:46
- * @LastEditTime: 2019-07-31 15:48:39
+ * @LastEditTime: 2019-08-13 14:36:14
  * @Description:    标签页组件
  -->
 
@@ -112,6 +112,8 @@ export default {
         return '博文详情'
       } else if (e === 'admin-blog-edit') {
         return '博文编辑'
+      } else if (e === 'admin-pc-column') {
+        return '栏目管理'
       }
     }
 
