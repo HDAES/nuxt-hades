@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-29 15:18:46
- * @LastEditTime: 2019-08-13 14:36:14
+ * @LastEditTime: 2019-08-13 21:46:05
  * @Description:    标签页组件
  -->
 
@@ -76,7 +76,7 @@ export default {
 
     handleClose(e) {
       if (this.tags.length > 1) {
-        this.tags.splice(this.tags.indexOf(e), 1)
+        this.$router.push({ name: this.tags.splice(this.tags.indexOf(e), 1)[0].index })
       }
     },
     handleClick(e) {
