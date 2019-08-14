@@ -1,3 +1,10 @@
+/*
+ * @Author: HADES
+ * @Date: 2019-07-30 11:10:46
+ * @LastEditTime: 2019-08-14 13:38:55
+ * @Description:
+ */
+import { Message } from 'element-ui'
 
 export default function ({ $axios, redirect }) {
   $axios.setHeader('Authorization', '123')
@@ -14,7 +21,8 @@ export default function ({ $axios, redirect }) {
     if (res.data.code >= 200 && res.data.code < 300) {
       return res.data.data
     } else {
-      return 'err'
+      Message.error(res.data.data.code)
+      return res
     }
   })
 

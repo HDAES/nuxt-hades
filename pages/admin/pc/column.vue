@@ -1,13 +1,13 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-13 14:32:04
- * @LastEditTime: 2019-08-13 16:32:37
+ * @LastEditTime: 2019-08-14 13:58:09
  * @Description:    pc端栏目管理
  -->
 <template>
   <div class="column">
     <div class="column-title">
-      <i class="iconfont icon-wenzhang" />
+      <i class="iconfont el-icon-s-platform" />
       栏目管理
     </div>
 

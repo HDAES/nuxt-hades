@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-08-05 22:42:36
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-13 17:50:27
+ * @LastEditTime: 2019-08-14 14:11:25
  * @Description:
  */
 export default {
@@ -16,6 +16,11 @@ export default {
   insertDataDetails: '/api/admin/details/inData', // 添加博文的详细信息
   delDataDetails: '/api/admin/details/delData', // 删除博文的详细信息
   uploadImage: '/api/admin/details/image', // 修改博文的图片
+  getArticleData: '/api/admin/article/getArticleData', // 获取博文内容
+  getBlogTitle: '/api/admin/article/getTitleData', // 获取分类后博文列表
+  insertBlog: '/api/admin/article/addData', // 添加博文
+  upDataBlog: '/api/admin/article/upData', // 更新博文
   getPcSort: '/api/admin/pc/getSort', // 获取PC端栏目
-  upDataPcSort: '/api/admin/pc/updataSort' // 修改PC栏目
+  upDataPcSort: '/api/admin/pc/updataSort', // 修改PC栏目
+  getPcAssort: '/api/admin/pc/getPcAssort' // 修改PC分类
 }

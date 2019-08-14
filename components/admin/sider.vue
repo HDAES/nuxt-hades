@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-30 11:10:46
- * @LastEditTime: 2019-08-13 16:53:52
+ * @LastEditTime: 2019-08-14 13:55:18
  * @Description:
  -->
 <template>
@@ -115,7 +115,8 @@ export default {
               index: '/admin/pc/column'
             },
             {
-              name: '栏目内容'
+              name: '栏目内容',
+              index: '/admin/pc/assort'
             }
           ]
         }
