@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-08-05 22:42:36
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-14 14:11:25
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-14 22:06:31
  * @Description:
  */
 export default {
@@ -22,5 +22,6 @@ export default {
   upDataBlog: '/api/admin/article/upData', // 更新博文
   getPcSort: '/api/admin/pc/getSort', // 获取PC端栏目
   upDataPcSort: '/api/admin/pc/updataSort', // 修改PC栏目
-  getPcAssort: '/api/admin/pc/getPcAssort' // 修改PC分类
+  getPcAssort: '/api/admin/pc/getPcAssort', // 获取PC分类
+  changePcSort: '/api/admin/pc/changePcSort'// 修改博文的PC分类
 }

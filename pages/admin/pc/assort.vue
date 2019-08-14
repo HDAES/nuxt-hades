@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-14 13:52:08
- * @LastEditTime: 2019-08-14 17:54:28
+ * @LastEditTime: 2019-08-14 22:29:14
  * @Description: 分类
  -->
 <template>
@@ -115,7 +115,7 @@ export default {
     async getPcSort() {
       await this.$axios.get(api.getPcSort).then((res) => {
         this.pcSort = res
-        console.log(res[0])
+        // console.log(res[0])
         this.tabsIndex = res[0].pc_sort_id + ''
       })
     },
@@ -131,11 +131,21 @@ export default {
       })
     },
     // 提交
-    submit() {
-      console.log(this.blogId, this.tabsIndex)
+    async submit() {
+      const options = {
+        id: this.blogId,
+        pc_sort_id: parseInt(this.tabsIndex)
+      }
+      await this.$axios.post(api.changePcSort, options).then((res) => {
+        this.dialog = false
+        this.getBlog()
+      })
     },
     // 改变tabs状态
     handleClick(e) {
+      this.tabsIndex = e.name
+      this.sortId = ''
+      this.blogId = ''
       const pcBlog = []
       this.allBlog.map((item) => {
         if (item.pc_sort === parseInt(e.name)) {
