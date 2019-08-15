@@ -23,5 +23,8 @@ export default {
   getPcSort: '/api/admin/pc/getSort', // 获取PC端栏目
   upDataPcSort: '/api/admin/pc/updataSort', // 修改PC栏目
   getPcAssort: '/api/admin/pc/getPcAssort', // 获取PC分类
-  changePcSort: '/api/admin/pc/changePcSort'// 修改博文的PC分类
+  changePcSort: '/api/admin/pc/changePcSort', // 修改博文的PC分类
+  getDailyRetain: '/api/admin/wechat/getData', // 获取小程序数据
+  getcarousel: '/api/admin/wechat/getcarousel', // 获取小程序轮播
+  updataCarousel: '/api/admin/wechat/addupload'
 }
