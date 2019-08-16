@@ -26,5 +26,10 @@ export default {
   changePcSort: '/api/admin/pc/changePcSort', // 修改博文的PC分类
   getDailyRetain: '/api/admin/wechat/getData', // 获取小程序数据
   getcarousel: '/api/admin/wechat/getcarousel', // 获取小程序轮播
-  updataCarousel: '/api/admin/wechat/addupload'
+  updataCarousel: '/api/admin/wechat/addupload', // 修改小程序轮播
+  getWeappUser: '/api/admin/wechat/getUserInfo', // 获取小程序用户
+  getSaying: '/api/admin/wechat/getSaying', // 获取名言
+  updataSaying: '/api/admin/wechat/upSaying', // 修改名言的状态
+  addSaying: '/api/admin/wechat/addSaying', // 添加名言
+  getLoginInfo: '/api/admin/serverinfo/getinfo'
 }
