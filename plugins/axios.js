@@ -1,35 +1,39 @@
 /*
  * @Author: HADES
  * @Date: 2019-07-30 11:10:46
- * @LastEditTime: 2019-08-14 22:16:23
+ * @LastEditTime: 2019-08-18 23:03:07
  * @Description:
  */
-import { Message } from 'element-ui'
 
-export default function ({ $axios, redirect }) {
-  $axios.setHeader('Authorization', '123')
+import { Message } from 'element-ui'
+export default function ({ $axios, redirect, store }) {
+  // console.log(store.state.blog.TOKEN)
+  $axios.setHeader('Authorization', store.state.blog.TOKEN)
   $axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', [
     'post'
   ])
   // $axios.defaults.baseURL = 'https://blog.xl686.com'
   $axios.defaults.baseURL = 'http://localhost:3001'
   $axios.onRequest((config) => {
-
+    // console.log(config)
   })
 
   $axios.onResponse((res) => {
+    // console.log(res)
     if (res.data.code >= 200 && res.data.code < 300) {
       return res.data.data
+    } else if (res.data.code === -1) {
+      // redirect('/admin/login')
     } else {
       Message.error(res.data.data.code)
       return res
     }
   })
 
-  // $axios.onError((error) => {
-  //   const code = parseInt(error.response && error.response.status)
-  //   if (code >= 400) {
-  //      redirect('/400')
-  //   }
-  // })
+// $axios.onError((error) => {
+//   const code = parseInt(error.response && error.response.status)
+//   if (code >= 400) {
+//     redirect('/400')
+//   }
+// })
 }

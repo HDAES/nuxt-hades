@@ -1,14 +1,16 @@
 /*
  * @Date: 2019-08-05 22:42:36
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-12 21:48:35
+ * @LastEditTime: 2019-08-18 22:48:19
  * @Description:api 接口
  */
+
 import api from '@/static/api'
 const state = () => ({
   allBlog: [],
   blogSort: [],
-  blogDetails: []
+  blogDetails: [],
+  TOKEN: ''
 })
 
 const mutations = {
@@ -20,6 +22,9 @@ const mutations = {
   },
   saveBlogDetails(state, payload) {
     state.blogDetails = payload
+  },
+  saveToken(state) {
+    state.TOKEN = JSON.parse(localStorage.getItem('TOKEN'))
   }
 }
 

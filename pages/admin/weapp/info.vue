@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-14 23:06:05
+ * @LastEditTime: 2019-08-18 16:06:41
  * @Description:  微信小程序的基本信息
  -->
 <template>
@@ -11,11 +11,13 @@
       基本信息
     </div>
     <div class="echarts-container">
-      <div id="DailyRetain" />
-      <div id="DailyRetains" />
-      <div id="genders" />
-      <div id="platforms" />
-      <div id="ages" />
+      <no-ssr>
+        <div id="DailyRetain" />
+        <div id="DailyRetains" />
+        <div id="genders" />
+        <div id="platforms" />
+        <div id="ages" />
+      </no-ssr>
     </div>
   </div>
 </template>

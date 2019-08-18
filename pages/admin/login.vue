@@ -1,8 +1,14 @@
+<!--
+ * @Date: 2019-07-26 23:17:05
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-18 23:05:35
+ * @Description:
+ -->
 <template>
   <div class="admin-login">
     <!-- <background class="bg" /> -->
     <div class="login-box">
-      <img class="qcode" src="~static/image/qcode.png" alt="">
+      <img class="qcode" src="~static/image/qcode.png" alt="" @click="showDiag">
       <div class="title">
         login
       </div>
@@ -20,26 +26,26 @@
           </el-button>
         </el-form-item>
       </el-form>
-
-      <!-- 扫码弹出框 -->
-      <el-dialog title="使用微信小程序扫码登陆" :visible.sync="centerDialogVisible" width="30%" center :before-close="handleClose">
-        <img class="qcodeimg" :src="Qcode" alt>
-        <div class="msg_info">
-          <div v-if="scanSuccess== ''">
-            请在
-            <span>{{ time }}</span>内扫码登陆
-          </div>
-          <div v-else>
-            {{ scanSuccess }}
-          </div>
-          <span v-if="scanSuccess!= ''">刷新</span>
-        </div>
-      </el-dialog>
     </div>
+    <!-- 扫码弹出框 -->
+    <el-dialog title="使用微信小程序扫码登陆" :visible.sync="qcodeDiag" width="30%" center>
+      <img class="qcodeimg" :src="Qcode" alt>
+      <div class="msg_info">
+        <div v-if="scanSuccess== ''">
+          请在
+          <span>{{ time }}</span>内扫码登陆
+        </div>
+        <div v-else>
+          {{ scanSuccess }}
+        </div>
+        <span v-if="scanSuccess!= ''">刷新</span>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
 // import Background from '@/components/common/background'
+import api from '@/static/api'
 export default {
   // components: { Background },
   data() {
@@ -54,25 +60,20 @@ export default {
         ],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       },
-      centerDialogVisible: false
+      qcodeDiag: false,
+      Qcode: '', // 二维码地址
+      scanSuccess: '',
+      time: 60
     }
   },
   methods: {
     login(userInfo) {
       this.$refs[userInfo].validate((valid) => {
         if (valid) {
-          this.$axios.post('/api/admin/login', this.userInfo).then(
+          this.$axios.post(api.login, this.userInfo).then(
             (res) => {
               if (res.code === 200) {
-                this.$store.dispatch(
-                  'asyncAddToken',
-                  JSON.stringify(res.token)
-                )
-                localStorage.setItem(
-                  'USER_INFO',
-                  JSON.stringify(this.userInfo)
-                )
-
+                this.storage.set('TOKEN', res.token)
                 this.$router.push('/admin/system')
               } else {
                 this.$message.error('账号或密码不正确')
@@ -87,6 +88,42 @@ export default {
           console.log('error submit!!')
           return false
         }
+      })
+    },
+    showDiag() {
+      this.qcodeDiag = true
+      this.time = 60
+      // 获取二维码
+      this.$axios.get(api.getLoginQcode).then((res) => {
+        this.Qcode = res.url
+        const token = res.token
+        const timeout = window.setInterval(() => {
+          this.time--
+          if (this.time % 5 === 0) {
+            console.log(this.time)
+            this.$axios.post(api.getState, { 'token': token }).then((res) => {
+              if (res.code === 200) {
+                // 登录成功
+                const options = { username: 'admin', password: 'scan' }
+                this.$axios.post(api.login, options).then((res) => {
+                  this.storage.set('TOKEN', res.token)
+                })
+
+                clearInterval(timeout)
+              } else if (res.code === 201) {
+                // 扫码成功
+                this.scanSuccess = res.msg
+              } else {
+                this.$message.error('登录失败')
+              }
+            })
+          } else if (this.time === 1) {
+            this.scanSuccess = '已过期，请重新生成二维码;'
+            clearInterval(timeout)
+          } else if (!this.qcodeDiag) {
+            clearInterval(timeout)
+          }
+        }, 1000)
       })
     }
   }
@@ -128,5 +165,11 @@ export default {
       }
     }
 }
-
+.qcodeimg{
+  margin:  0 auto;
+}
+.msg_info{
+  margin: 10px auto;
+  text-align: center;
+}
 </style>

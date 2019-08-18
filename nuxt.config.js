@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-14 22:47:04
+ * @LastEditTime: 2019-08-18 22:08:47
  * @Description:
  */
 
@@ -47,7 +47,8 @@ module.exports = {
     { src: '@/plugins/lazyload', ssr: false },
     { src: '@/plugins/vue-mavon-editor', srr: false },
     { src: '@/plugins/axios', srr: false },
-    { src: '@/plugins/bus', srr: false }
+    { src: '@/plugins/bus', srr: false },
+    { src: '@/plugins/localStorage', srr: false }
   ],
   /*
   ** Nuxt.js modules

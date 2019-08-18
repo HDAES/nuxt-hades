@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-08-18 16:03:35
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-18 22:44:21
+ * @Description:
+ -->
 <template>
   <div class="system">
     <div class="system-left">
@@ -65,6 +71,7 @@ export default {
   },
   created() {
     this.getIp()
+    // console.log(this.storage.get('TOKEN'))
   },
   methods: {
     // 获取登录者的ip地址和城市

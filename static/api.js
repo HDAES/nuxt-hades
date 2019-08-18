@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-08-05 22:42:36
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-14 22:06:31
+ * @LastEditTime: 2019-08-18 18:51:29
  * @Description:
  */
 export default {
@@ -31,5 +31,8 @@ export default {
   getSaying: '/api/admin/wechat/getSaying', // 获取名言
   updataSaying: '/api/admin/wechat/upSaying', // 修改名言的状态
   addSaying: '/api/admin/wechat/addSaying', // 添加名言
-  getLoginInfo: '/api/admin/serverinfo/getinfo'
+  getLoginInfo: '/api/admin/serverinfo/getinfo', // 获取登录信息
+  getLoginQcode: '/api/admin/scanlogin', // 获取登录二维码
+  getState: '/api/admin/getstate', // 获取登录状态，
+  login: '/api/admin/login'
 }
