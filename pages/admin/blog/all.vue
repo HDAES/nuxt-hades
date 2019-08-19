@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-11 22:47:26
+ * @LastEditTime: 2019-08-19 21:22:41
  * @Description: 所有博客
  -->
 
@@ -170,7 +170,6 @@ export default {
   //   ])
   // },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getAllBlog()
   },
   methods: {

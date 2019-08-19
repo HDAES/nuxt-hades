@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-08-19 21:13:26
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 21:32:12
+ * @Description:
+ -->
 <template>
   <div class="set">
     <div class="set-title">
@@ -30,7 +36,6 @@ export default {
     }
   },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getUser()
   },
   methods: {

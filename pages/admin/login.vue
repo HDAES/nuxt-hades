@@ -1,12 +1,12 @@
 <!--
  * @Date: 2019-07-26 23:17:05
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-18 23:05:35
+ * @LastEditTime: 2019-08-20 00:09:25
  * @Description:
  -->
 <template>
   <div class="admin-login">
-    <!-- <background class="bg" /> -->
+    <background class="bg" />
     <div class="login-box">
       <img class="qcode" src="~static/image/qcode.png" alt="" @click="showDiag">
       <div class="title">
@@ -44,10 +44,10 @@
   </div>
 </template>
 <script>
-// import Background from '@/components/common/background'
+import Background from '@/components/common/background'
 import api from '@/static/api'
 export default {
-  // components: { Background },
+  components: { Background },
   data() {
     return {
       userInfo: {
@@ -64,6 +64,13 @@ export default {
       Qcode: '', // 二维码地址
       scanSuccess: '',
       time: 60
+    }
+  },
+  mounted() {
+    if (this.storage.get('TOKEN')) {
+      this.$router.push('/admin/system')
+    } else {
+      console.log('先登录')
     }
   },
   methods: {
@@ -100,21 +107,19 @@ export default {
         const timeout = window.setInterval(() => {
           this.time--
           if (this.time % 5 === 0) {
-            console.log(this.time)
             this.$axios.post(api.getState, { 'token': token }).then((res) => {
               if (res.code === 200) {
-                // 登录成功
+              // 登录成功
                 const options = { username: 'admin', password: 'scan' }
                 this.$axios.post(api.login, options).then((res) => {
                   this.storage.set('TOKEN', res.token)
+                  this.$router.push('/admin/system')
                 })
 
                 clearInterval(timeout)
               } else if (res.code === 201) {
-                // 扫码成功
+              // 扫码成功
                 this.scanSuccess = res.msg
-              } else {
-                this.$message.error('登录失败')
               }
             })
           } else if (this.time === 1) {
@@ -139,7 +144,7 @@ export default {
 .admin-login{
 
     .bg{
-      background-image: url("~static/image/login_bg1.jpg");
+      background-image: url("http://qiniu.xl686.com/login_bg1.jpg");
       background-size: cover;
     }
 

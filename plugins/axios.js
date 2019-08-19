@@ -1,7 +1,7 @@
 /*
  * @Author: HADES
  * @Date: 2019-07-30 11:10:46
- * @LastEditTime: 2019-08-18 23:03:07
+ * @LastEditTime: 2019-08-19 21:40:28
  * @Description:
  */
 
@@ -23,7 +23,7 @@ export default function ({ $axios, redirect, store }) {
     if (res.data.code >= 200 && res.data.code < 300) {
       return res.data.data
     } else if (res.data.code === -1) {
-      // redirect('/admin/login')
+      redirect('/admin/login')
     } else {
       Message.error(res.data.data.code)
       return res

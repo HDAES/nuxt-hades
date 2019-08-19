@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-18 16:06:41
+ * @LastEditTime: 2019-08-19 21:32:03
  * @Description:  微信小程序的基本信息
  -->
 <template>
@@ -35,7 +35,6 @@ export default {
     }
   },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getDailyRetain()
   },
   methods: {

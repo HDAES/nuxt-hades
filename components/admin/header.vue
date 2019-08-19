@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:29:36
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-31 15:27:16
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 23:54:58
  * @Description:    后台管理页面 头部组件
  -->
 
@@ -34,6 +34,9 @@
               项目仓库
             </el-dropdown-item>
           </a>
+          <el-dropdown-item :command="2">
+            返回首页
+          </el-dropdown-item>
           <el-dropdown-item :command="1">
             退出登录
           </el-dropdown-item>
@@ -59,8 +62,11 @@ export default {
           this.$router.push('/about')
           break
         case 1 :
-
+          this.$router.push('/')
+          this.storage.remove('TOKEN')
           break
+        case 2:
+          this.$router.push('/')
       }
     },
     openSider() {

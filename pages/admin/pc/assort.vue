@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-14 13:52:08
- * @LastEditTime: 2019-08-14 22:29:14
+ * @LastEditTime: 2019-08-19 21:22:16
  * @Description: 分类
  -->
 <template>
@@ -99,7 +99,6 @@ export default {
     }
   },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getPcSort()
     this.getBlog()
     this.getBlogSort()

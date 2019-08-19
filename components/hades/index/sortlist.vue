@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-10 14:55:41
- * @LastEditTime: 2019-07-14 22:43:28
+ * @LastEditTime: 2019-08-19 23:58:22
  * @Description:分类列表
  -->
 
@@ -15,7 +15,7 @@
     </div>
     <div class="sort-list">
       <div
-        v-for="(item,index) in sorts"
+        v-for="(item,index) in sort"
         :key="index"
         class="sort-item"
       >
@@ -29,22 +29,21 @@
 </template>
 
 <script>
+import api from '@/static/api'
 export default {
   data() {
     return {
-      sorts: [{
-        name: '戒码一生',
-        icon: 'icon-ai-code'
-      }, {
-        name: '吃喝玩乐',
-        icon: 'icon-heshuicopy-'
-      }, {
-        name: '我思我在',
-        icon: 'icon-sikaoti'
-      }, {
-        name: '读万卷书',
-        icon: 'icon-shu'
-      }]
+      sort: []
+    }
+  },
+  created() {
+    this.getSort()
+  },
+  methods: {
+    getSort() {
+      this.$axios.get(api.getHPcSort).then((res) => {
+        this.sort = res
+      })
     }
   }
 

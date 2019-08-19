@@ -1,10 +1,13 @@
 /*
  * @Date: 2019-08-05 22:42:36
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-18 18:51:29
+ * @LastEditTime: 2019-08-19 23:39:15
  * @Description:
  */
 export default {
+  // hades
+  getSortBlogList: '/api/hades/sortArticleList',
+  getHPcSort: '/api/hades/sort',
   getAllBlog: '/api/admin/article/getData',
   changeState: '/api/admin/details/change', // 改变博文的显示状态
   getSort: '/api/admin/sort/getData', // 获取博文分类内容

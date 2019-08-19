@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-08-18 16:03:35
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-18 22:44:21
+ * @LastEditTime: 2019-08-19 21:22:33
  * @Description:
  -->
 <template>
@@ -70,7 +70,6 @@ export default {
     }
   },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getIp()
   },
   methods: {

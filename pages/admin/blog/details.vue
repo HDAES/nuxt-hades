@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-13 17:55:44
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 21:27:41
  * @Description: 详情
  -->
 
@@ -256,34 +256,38 @@ export default {
       dialogVisible: false, // 弹出框
       dialoUpload: false, // 图片放大
       dialogData: '',
-      blogSort: this.$store.state.blog.blogSort,
+      blogSort: [],
       size: 7,
       page: 1,
       uploadImage: '',
-      uploadId: ''
+      uploadId: '',
+      blogDetails: []
     }
   },
-  computed: {
-    blogDetails() {
-      return this.$store.state.blog.blogDetails
-      // .filter((item) => {
-      //   if ((item.sort.toUpperCase()).indexOf(this.filterkey.toUpperCase()) >= 0) {
-      //     return item
-      //   }
-      // })
-    }
-  },
-  async fetch({ store, params }) {
-    await Promise.all([
-      store.dispatch('blog/getBlogDetails'),
-      store.dispatch('blog/getBlogSort')
-    ])
-  },
-  created() {
-    // console.log(this.$store.state.blog.blogDetails)
-    // console.log(this.blogSort)
+  // async fetch({ store, params }) {
+  //   await Promise.all([
+  //     store.dispatch('blog/getBlogDetails'),
+  //     store.dispatch('blog/getBlogSort')
+  //   ])
+  // },
+  mounted() {
+    this.getBlogDetails()
+    this.getBlogSort()
   },
   methods: {
+    // 获取博文详情
+    getBlogDetails() {
+      this.$axios.get(api.getBlogDetails).then((res) => {
+        this.blogDetails = res
+      })
+    },
+    // 获取博文分类
+    async getBlogSort() {
+      await this.$axios.get(api.getSort).then((res) => {
+        this.blogSort = res
+      })
+    },
+    // 编辑按钮
     editBtn(e) {
       this.dialogVisible = true
       this.dialogData = {

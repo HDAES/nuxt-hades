@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-07-26 23:17:05
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 23:26:12
+ * @Description:
+ -->
 <template>
   <div class="category-header">
     <img v-lazy="sort.sort[0].background" alt="">

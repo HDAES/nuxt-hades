@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-07-14 19:12:42
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 23:52:00
+ * @Description:
+ -->
 <template>
   <div class="hades" :class="$store.state.theme.theme +'-theme'">
     <!-- <background /> -->
@@ -45,6 +51,7 @@ export default {
       this.path = to.path
     }
   },
+
   mounted() {
     // 获取浏览器的高度
     const _this = this

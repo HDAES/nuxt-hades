@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-08-19 21:13:26
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 21:31:53
+ * @Description:
+ -->
 <template>
   <div class="carousel">
     <div class="carousel-title">
@@ -65,7 +71,6 @@ export default {
     }
   },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getcarousel()
   },
   methods: {

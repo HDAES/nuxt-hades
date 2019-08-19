@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-30 14:43:29
- * @LastEditTime: 2019-08-14 13:49:43
+ * @LastEditTime: 2019-08-19 21:29:29
  * @Description: 编辑博文
  -->
 <template>
@@ -59,20 +59,20 @@ export default {
       articleId: '',
       Is_disabled: true,
       Is_insert: false,
-      article: ''
+      article: '',
+      sort: []
     }
   },
-  computed: {
-    sort() {
-      return this.$store.state.blog.blogSort
-    }
-  },
-  async fetch({ store, params }) {
-    await Promise.all([
-      store.dispatch('blog/getBlogSort')
-    ])
+  mounted() {
+    this.getBlogSort()
   },
   methods: {
+    // 获取博文分类
+    async getBlogSort() {
+      await this.$axios.get(api.getSort).then((res) => {
+        this.sort = res
+      })
+    },
     // 选择要修改博文的种类
     chooseSort(e) {
       this.$axios.post(api.getBlogTitle, { sort_id: e }).then((res) => {

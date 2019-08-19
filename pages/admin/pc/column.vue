@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-13 14:32:04
- * @LastEditTime: 2019-08-14 13:58:09
+ * @LastEditTime: 2019-08-19 21:22:29
  * @Description:    pc端栏目管理
  -->
 <template>
@@ -64,7 +64,6 @@ export default {
     }
   },
   mounted() {
-    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getSort()
   },
   methods: {

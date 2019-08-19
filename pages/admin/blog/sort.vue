@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-12 23:07:52
+ * @LastEditTime: 2019-08-19 21:30:24
  * @Description: 种类
  -->
 
@@ -132,24 +132,29 @@ export default {
       dialogVisible: false, // 填出框
       dialogData: '',
       page: 1,
-      size: 5
+      size: 5,
+      sort: []
     }
   },
   computed: {
     blogData() {
-      return this.$store.state.blog.blogSort.filter((item) => {
+      return this.sort.filter((item) => {
         if ((item.sort.toUpperCase()).indexOf(this.filterkey.toUpperCase()) >= 0) {
           return item
         }
       })
     }
   },
-  async fetch({ store, params }) {
-    await Promise.all([
-      store.dispatch('blog/getBlogSort')
-    ])
+  mounted() {
+    this.getBlogSort()
   },
   methods: {
+    // 获取博文分类
+    async getBlogSort() {
+      await this.$axios.get(api.getSort).then((res) => {
+        this.sort = res
+      })
+    },
     editBtn(e) {
       this.dialogVisible = true
       this.dialogData = e.row

@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-30 11:10:46
- * @LastEditTime: 2019-07-30 11:10:46
+ * @LastEditTime: 2019-08-19 21:21:34
  * @Description:
  -->
 <template>
@@ -23,7 +23,10 @@ import vHeader from '@/components/admin/header'
 import vSider from '@/components/admin/sider'
 import vTags from '@/components/admin/tags'
 export default {
-  components: { vHeader, vSider, vTags }
+  components: { vHeader, vSider, vTags },
+  beforeMount() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
+  }
 }
 </script>
 

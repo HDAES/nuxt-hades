@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-07-31 22:19:50
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-19 21:39:38
+ * @Description:
+ -->
 <template>
   <header>
     <div class="wrapper">
@@ -35,7 +41,7 @@ export default {
           name: '关于'
         },
         {
-          index: '/admin/system',
+          index: '/admin/login',
           name: '后台管理系统'
         }
       ],
