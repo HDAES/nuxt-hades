@@ -69,9 +69,9 @@ export default {
       Ip: ''
     }
   },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getIp()
-    // console.log(this.storage.get('TOKEN'))
   },
   methods: {
     // 获取登录者的ip地址和城市

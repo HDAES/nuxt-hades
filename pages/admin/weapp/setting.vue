@@ -29,7 +29,8 @@ export default {
       weapp_user: []
     }
   },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getUser()
   },
   methods: {

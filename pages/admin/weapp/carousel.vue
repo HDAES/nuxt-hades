@@ -64,7 +64,8 @@ export default {
       url_id: ''
     }
   },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getcarousel()
   },
   methods: {

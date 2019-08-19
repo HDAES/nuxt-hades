@@ -8,7 +8,7 @@
 import { Message } from 'element-ui'
 export default function ({ $axios, redirect, store }) {
   // console.log(store.state.blog.TOKEN)
-  $axios.setHeader('Authorization', store.state.blog.TOKEN)
+  // $axios.setHeader('Authorization', store.state.blog.TOKEN)
   $axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', [
     'post'
   ])

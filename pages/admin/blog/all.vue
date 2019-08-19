@@ -143,6 +143,7 @@ export default {
   layout: 'admin',
   data() {
     return {
+      allBlog: [],
       filterkey: '', // 筛选关键词
       value: 100,
       loading: false,
@@ -156,19 +157,30 @@ export default {
   },
   computed: {
     blogData() {
-      return this.$store.state.blog.allBlog.filter((item) => {
+      return this.allBlog.filter((item) => {
         if ((item.title).indexOf(this.filterkey) >= 0) {
           return item
         }
       })
     }
   },
-  async fetch({ store, params }) {
-    await Promise.all([
-      store.dispatch('blog/asyncGetBlog')
-    ])
+  // async fetch({ store, params }) {
+  //   await Promise.all([
+  //     store.dispatch('blog/asyncGetBlog')
+  //   ])
+  // },
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
+    this.getAllBlog()
   },
   methods: {
+    // 获取所有博文方法
+    async getAllBlog() {
+      await this.$axios.get(api.getAllBlog).then((res) => {
+        console.log(res)
+        this.allBlog = res
+      })
+    },
     // 格式化时间
     time(a, b, c, d) {
       const date = new Date(c)

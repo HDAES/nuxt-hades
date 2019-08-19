@@ -81,6 +81,7 @@ export default {
   layout: 'admin',
   data() {
     return {
+      sort: [],
       pcSort: [], // pc分类
       sortId: '', // 博客分类ID
       blogId: '', // 博客ID
@@ -95,22 +96,21 @@ export default {
   computed: {
     c_pcBlog() {
       return this.pcBlog
-    },
-    sort() {
-      return this.$store.state.blog.blogSort
     }
-
   },
-  async fetch({ store, params }) {
-    await Promise.all([
-      store.dispatch('blog/getBlogSort')
-    ])
-  },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getPcSort()
     this.getBlog()
+    this.getBlogSort()
   },
   methods: {
+    // 获取博文分类
+    async getBlogSort() {
+      await this.$axios.get(api.getSort).then((res) => {
+        this.sort = res
+      })
+    },
     // 获取PC端分类
     async getPcSort() {
       await this.$axios.get(api.getPcSort).then((res) => {

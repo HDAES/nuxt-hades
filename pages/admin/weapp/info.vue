@@ -34,7 +34,8 @@ export default {
       ages: []
     }
   },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getDailyRetain()
   },
   methods: {

@@ -96,7 +96,8 @@ export default {
       newAuthor: ''
     }
   },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getSaying()
   },
   methods: {

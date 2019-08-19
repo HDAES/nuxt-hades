@@ -63,7 +63,8 @@ export default {
       tabsForm: ''
     }
   },
-  created() {
+  mounted() {
+    this.$axios.setHeader('Authorization', this.storage.get('TOKEN'))
     this.getSort()
   },
   methods: {
