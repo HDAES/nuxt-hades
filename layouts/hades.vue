@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-14 19:12:42
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 23:52:00
+ * @LastEditTime: 2019-08-20 23:44:19
  * @Description:
  -->
 <template>
@@ -10,9 +10,8 @@
     <my-header />
     <div class="wrapper" :style="{minHeight:clientHeight- 220 +'px'}">
       <div class="main">
-        <div class="left">
-          <nuxt />
-        </div>
+        <nuxt class="left" />
+
         <div class="right">
           <hot-article />
           <div class="sort-tag" :class="ceiling?'is_fixed':''">
@@ -97,7 +96,7 @@ export default {
         width: 360px;
      }
      .left{
-        flex: 1
+        width: 820px;
      }
  }
  .is_fixed {

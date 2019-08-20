@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-04 22:55:06
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-08 17:28:17
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-20 23:10:09
  * @Description:   上下滑块
  -->
 
@@ -9,9 +9,10 @@
   <div class="scroll-card">
     <i class="iconfont icon-sound card-icon" />
     <ul :style="{ top: scroll+'px'}">
-      <li>今天会很残酷，明天会更残酷，后天会很美好，但大部分人会死在明天晚上。</li>
-      <li>晚上想想千条路，早上醒来走原路。</li>
-      <li>"Expensive" has never been its weakness, "poor" has always been your weakness.</li>
+      <li v-for="(item,index) in say" :key="index">
+        <span>{{ item.content }}</span>
+        <span style=" text-align: right">-- {{ item.author }}</span>
+      </li>
     </ul>
     <div class="scroll-control">
       <i class="iconfont icon-31shouqi" @click="up" />
@@ -24,10 +25,21 @@
 export default {
   data() {
     return {
-      scroll: 0
+      scroll: 0,
+      say: this.$store.state.data.say,
+      timmer: setInterval(() => {
+        this.scroll = this.scroll - 50
+        if (this.scroll === -150) {
+          this.scroll = 0
+        }
+      }, 5000)
     }
   },
+  destroyed() {
+    clearInterval(this.timmer)
+  },
   methods: {
+    // 轮播函数
     under() {
       if (this.scroll === -100) {
         this.scroll = 0
@@ -67,6 +79,8 @@ export default {
         left: 5%;
         transition:top .5s;
         li{
+            display: flex;
+            justify-content: space-between;
             height: 50px;
             padding: 0 10px;
             line-height: 50px;
@@ -80,6 +94,7 @@ export default {
         top:0;
         display: flex;
         flex-direction: column;
+
         i{
             height: 25px;
             line-height: 25px;

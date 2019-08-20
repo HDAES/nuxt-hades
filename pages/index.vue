@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-07-26 23:17:05
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-20 22:47:11
+ * @Description:
+ -->
 <template>
   <div class="container">
     <column />
@@ -18,7 +24,8 @@ export default {
   async fetch({ store, params }) {
     await Promise.all([
       store.dispatch('data/asyncGetSort'),
-      store.dispatch('data/asyncGetArticleList')
+      store.dispatch('data/asyncGetArticleList'),
+      store.dispatch('data/asyncGetSay')
     ])
   },
   created() {

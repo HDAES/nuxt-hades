@@ -1,18 +1,23 @@
 /*
  * @Author: HADES
  * @Date: 2019-07-30 11:10:46
- * @LastEditTime: 2019-08-20 00:33:06
+ * @LastEditTime: 2019-08-21 00:06:55
  * @Description:
  */
 
 import { Message } from 'element-ui'
 export default function ({ $axios, redirect, store }) {
+  $axios.setHeader('Cache-Control', 'no-cache')
   $axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', [
     'post'
   ])
-  $axios.setHeader('Cache-Control', 'no-cache')
-  $axios.defaults.baseURL = 'https://blog.xl686.com'
-  // $axios.defaults.baseURL = 'http://localhost:3001'
+
+  if (process.env.NODE_ENV === 'development') {
+    $axios.defaults.baseURL = 'http://localhost:3001'
+  } else if (process.env.NODE_ENV === 'production') {
+    $axios.defaults.baseURL = 'https://blog.xl686.com'
+  }
+
   $axios.onRequest((config) => {
     // console.log(config)
   })

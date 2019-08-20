@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:29:36
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 23:54:58
+ * @LastEditTime: 2019-08-20 23:20:13
  * @Description:    后台管理页面 头部组件
  -->
 
@@ -62,7 +62,7 @@ export default {
           this.$router.push('/about')
           break
         case 1 :
-          this.$router.push('/')
+          this.$router.push('/admin/login')
           this.storage.remove('TOKEN')
           break
         case 2:

@@ -1,13 +1,16 @@
 <!--
  * @Date: 2019-07-26 23:17:05
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-20 00:09:25
+ * @LastEditTime: 2019-08-20 23:43:25
  * @Description:
  -->
 <template>
   <div class="admin-login">
     <background class="bg" />
     <div class="login-box">
+      <nuxt-link class="toIndex" to="/">
+        <i class="el-icon-back" />
+      </nuxt-link>
       <img class="qcode" src="~static/image/qcode.png" alt="" @click="showDiag">
       <div class="title">
         login
@@ -33,14 +36,17 @@
       <div class="msg_info">
         <div v-if="scanSuccess== ''">
           请在
-          <span>{{ time }} S</span>内扫码登陆
+          <span>{{ time }} s</span>内扫码登陆
         </div>
         <div v-else>
           {{ scanSuccess }}
         </div>
-        <span v-if="scanSuccess!= ''">刷新</span>
+        <span v-if="scanSuccess!= ''" class="ref" @click="ref">刷新</span>
       </div>
     </el-dialog>
+    <div class="version">
+      版本：1.0.0
+    </div>
   </div>
 </template>
 <script>
@@ -108,6 +114,7 @@ export default {
     showDiag() {
       this.qcodeDiag = true
       this.time = 60
+      this.scanSuccess = ''
       // 获取二维码
       this.$axios.get(api.getLoginQcode).then((res) => {
         this.Qcode = res.url
@@ -138,6 +145,10 @@ export default {
           }
         }, 1000)
       })
+    },
+    // 刷新登录
+    ref() {
+      this.showDiag()
     }
   }
 }
@@ -184,5 +195,25 @@ export default {
 .msg_info{
   margin: 10px auto;
   text-align: center;
+}
+.ref{
+  padding-top:5px;
+  cursor: pointer;
+  text-decoration: underline;
+  color:red;
+}
+.version{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+.toIndex{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  i{
+    font-size: 36px;
+  }
+
 }
 </style>

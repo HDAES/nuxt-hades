@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2019-07-14 19:12:42
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-20 21:28:58
+ * @Description:
+ -->
 <template>
   <div class="article">
     <div class="article-header">
@@ -70,7 +76,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-       padding: 50px 0 10px;
+      padding: 50px 0 10px;
     .label {
       position: absolute;
       left: 0;
