@@ -75,7 +75,9 @@ export default {
   methods: {
     // 获取登录者的ip地址和城市
     async getIp() {
-      await this.$axios.get(api.getLoginInfo)
+      await this.$axios.get(api.getLoginInfo).then((res) => {
+        this.Ip = res
+      })
     }
   }
 }
@@ -116,7 +118,7 @@ export default {
         padding: 20px 10px 0;
         div {
           display: flex;
-          width: 50%;
+          width: 60%;
           padding: 2px 0;
           span {
             flex: 1;

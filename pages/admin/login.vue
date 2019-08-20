@@ -33,7 +33,7 @@
       <div class="msg_info">
         <div v-if="scanSuccess== ''">
           请在
-          <span>{{ time }}</span>内扫码登陆
+          <span>{{ time }} S</span>内扫码登陆
         </div>
         <div v-else>
           {{ scanSuccess }}
@@ -68,7 +68,15 @@ export default {
   },
   mounted() {
     if (this.storage.get('TOKEN')) {
-      this.$router.push('/admin/system')
+      const _this = this
+      this.$message({
+        message: '请以登陆,3S后跳转。',
+        type: 'success',
+        duration: 3000,
+        onClose: function () {
+          _this.$router.push('/admin/system')
+        }
+      })
     } else {
       console.log('先登录')
     }

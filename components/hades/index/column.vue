@@ -12,7 +12,7 @@
       :key="index"
       class="column-item"
     >
-      <nuxt-link :to="{path:'/category/'+ item.name,query:{id:item.pc_sort_id}}">
+      <nuxt-link :to="{path:'/category/'+ item.pc_sort_id}">
         <img
           v-lazy="item.background"
           class="column-image"

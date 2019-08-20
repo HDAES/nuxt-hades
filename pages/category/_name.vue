@@ -18,21 +18,16 @@ import ArticleList from '@/components/hades/index/articlelist'
 export default {
   layout: 'hades',
   components: { MyHeader, ArticleList },
-  head() {
-    return {
-      title: `${this.$route.params.name} | HADES`
-    }
-  },
   async asyncData({ $axios, route }) {
     const articleData = await $axios.get('/api/hades/articlelist')
     const sortData = await $axios.get('/api/hades/sort')
     const articlelist = articleData.filter((item) => {
-      if (item.name === route.params.name) {
+      if (item.pc_sort === parseInt(route.params.name)) {
         return item
       }
     })
     const sort = sortData.filter((item) => {
-      if (item.name === route.params.name) {
+      if (item.pc_sort_id === parseInt(route.params.name)) {
         return item
       }
     })
@@ -40,7 +35,6 @@ export default {
       sort: sort,
       list: articlelist
     }
-    // console.log(obj)
     return { obj, articlelist }
   }
 }

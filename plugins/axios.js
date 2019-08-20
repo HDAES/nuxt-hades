@@ -7,13 +7,12 @@
 
 import { Message } from 'element-ui'
 export default function ({ $axios, redirect, store }) {
-  // console.log(store.state.blog.TOKEN)
-  // $axios.setHeader('Authorization', store.state.blog.TOKEN)
   $axios.setHeader('Content-Type', 'application/x-www-form-urlencoded', [
     'post'
   ])
-  // $axios.defaults.baseURL = 'https://blog.xl686.com'
-  $axios.defaults.baseURL = 'http://localhost:3001'
+  $axios.setHeader('Cache-Control', 'no-cache')
+  $axios.defaults.baseURL = 'https://blog.xl686.com'
+  // $axios.defaults.baseURL = 'http://localhost:3001'
   $axios.onRequest((config) => {
     // console.log(config)
   })

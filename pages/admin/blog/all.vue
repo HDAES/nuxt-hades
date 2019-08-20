@@ -176,7 +176,6 @@ export default {
     // 获取所有博文方法
     async getAllBlog() {
       await this.$axios.get(api.getAllBlog).then((res) => {
-        console.log(res)
         this.allBlog = res
       })
     },
