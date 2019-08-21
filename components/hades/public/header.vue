@@ -1,16 +1,16 @@
 <!--
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 21:39:38
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-21 14:13:30
  * @Description:
  -->
 <template>
   <header>
     <div class="wrapper">
-      <a href="/">
+      <nuxt-link to="/">
         <img src="~static/image/logo.png" alt="logo">
         <span class="logo-text">hades.me</span>
-      </a>
+      </nuxt-link>
       <div class="tabs">
         <nuxt-link v-for="(item,index) in tabs" :key="index" :to="item.index">
           <span :class="route == item.index?'tabs_active':''">{{ item.name }}</span>

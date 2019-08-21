@@ -225,9 +225,10 @@
         <br>
         <el-upload
           id="upload"
-          action="http://localhost:3001/api/admin/wechat/upload"
+          :action="upUrl"
           :headers="{
-            'enctype':'multipart/form-data'
+            'enctype':'multipart/form-data',
+            'Authorization':token
           }"
           :on-error="handleError"
           :on-success="handleSuccess"
@@ -261,7 +262,9 @@ export default {
       page: 1,
       uploadImage: '',
       uploadId: '',
-      blogDetails: []
+      blogDetails: [],
+      upUrl: '',
+      token: ''
     }
   },
   // async fetch({ store, params }) {
@@ -270,9 +273,17 @@ export default {
   //     store.dispatch('blog/getBlogSort')
   //   ])
   // },
+  created() {
+    if (process.env.NODE_ENV === 'development') {
+      this.upUrl = 'http://localhost:3001/api/admin/wechat/upload'
+    } else if (process.env.NODE_ENV === 'production') {
+      this.upUrl.defaults.baseURL = 'https://blog.xl686.com/api/admin/wechat/upload'
+    }
+  },
   mounted() {
     this.getBlogDetails()
     this.getBlogSort()
+    this.token = this.storage.get('TOKEN')
   },
   methods: {
     // 获取博文详情
@@ -389,7 +400,7 @@ export default {
       if (res.code === -1) {
         console.log(res.msg)
       } else {
-        this.uploadImage = res.msg
+        this.uploadImage = res.data
       }
       console.log(res)
     }

@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-18 22:08:47
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-21 13:54:32
  * @Description:
  */
 
@@ -48,7 +48,9 @@ module.exports = {
     { src: '@/plugins/vue-mavon-editor', srr: false },
     { src: '@/plugins/axios', srr: false },
     { src: '@/plugins/bus', srr: false },
-    { src: '@/plugins/localStorage', srr: false }
+    { src: '@/plugins/localStorage', srr: false },
+    { src: '@/plugins/APlayer', mode: 'client' }
+
   ],
   /*
   ** Nuxt.js modules

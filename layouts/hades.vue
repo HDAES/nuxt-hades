@@ -1,18 +1,17 @@
 <!--
  * @Date: 2019-07-14 19:12:42
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-20 23:44:19
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-21 16:51:41
  * @Description:
  -->
 <template>
   <div class="hades" :class="$store.state.theme.theme +'-theme'">
-    <background />
+    <!-- <background /> -->
     <my-header />
-    <div class="wrapper" :style="{minHeight:clientHeight- 220 +'px'}">
+    <div class="wrapper" :style="{minHeight:clientHeight- 200 +'px'}">
       <div class="main">
-        <nuxt class="left" />
-
-        <div class="right">
+        <nuxt class="left" :class="fixed? '':'full'" />
+        <div v-show="fixed" class="right">
           <hot-article />
           <div class="sort-tag" :class="ceiling?'is_fixed':''">
             <sort-list v-if="path !== '/'" />
@@ -20,6 +19,9 @@
           </div>
         </div>
       </div>
+      <no-ssr>
+        <aplayer :audio="audio" :lrc-type="3" :class="fixed?'':'audio'" :fixed="fixed" :mini="false" />
+      </no-ssr>
     </div>
     <sider-bar />
     <my-footer />
@@ -33,24 +35,48 @@ import SiderBar from '@/components/hades/public/siderbar'
 import HotArticle from '@/components/hades/index/hotarticle'
 import MyTag from '@/components/hades/index/tag'
 import SortList from '@/components/hades/index/sortlist'
-import Background from '@/components/common/background'
+// import Background from '@/components/common/background'
 export default {
   components: {
-    MyHeader, MyFooter, SiderBar, HotArticle, MyTag, SortList, Background
+    MyHeader, MyFooter, SiderBar, HotArticle, MyTag, SortList
   },
   data() {
     return {
       ceiling: false,
       clientHeight: '',
-      path: this.$route.path
+      path: this.$route.path,
+      fixed: true, // 播放吸底部
+      audio: this.$store.state.data.audio
     }
   },
   watch: {
     $route(to, from) {
       this.path = to.path
+      if (to.path === '/about' || to.path === '/music') {
+        // 全屏
+        console.log('full')
+        if (to.path === '/music') {
+          this.fixed = false
+        }
+      } else {
+        this.fixed = true
+      }
     }
   },
 
+  created() {
+    // console.log(this.$route.path)
+    if (this.$route.path === '/about' || this.$route.path === '/music') {
+      // 全屏
+      this.full = true
+      if (this.$route.path === '/music') {
+        this.fixed = false
+      }
+    } else {
+      this.full = false
+      this.fixed = true
+    }
+  },
   mounted() {
     // 获取浏览器的高度
     const _this = this
@@ -82,11 +108,12 @@ export default {
 
 <style lang="scss" scoped>
  @import '@/assets/css/theme.css';
-//  .hades{
-
-//      background-color: var(--content-color);
-//  }
- .main{
+ .hades{
+    background-color: var(--content-color);
+ }
+.wrapper{
+  position: relative;
+  .main{
      width: var(--view-container);
      margin: 0 auto;
      padding-top: 80px;
@@ -98,7 +125,19 @@ export default {
      .left{
         width: 820px;
      }
- }
+     .full{
+        width: 1200px;
+     }
+  }
+  .audio{
+    position: absolute;
+    bottom: 0;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%)
+  }
+}
+
  .is_fixed {
   position: fixed;
   top: 60px;

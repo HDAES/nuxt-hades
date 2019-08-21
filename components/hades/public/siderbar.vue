@@ -1,12 +1,12 @@
 <!--
  * @Author: HADES
  * @Date: 2019-07-04 11:33:08
- * @LastEditTime: 2019-07-08 16:50:17
+ * @LastEditTime: 2019-08-21 11:50:02
  * @Description:'页面右边悬浮按钮'
  -->
 <template>
   <div class="right-card" :style="{ height: height +'px'}">
-    <div class="card-item">
+    <div class="card-item" @click="toMusic">
       <i class="iconfont icon-yinle" />
     </div>
     <div class="card-item" @click="change">
@@ -50,6 +50,9 @@ export default {
       } else if (scrollTop < 200) {
         this.height = 72
       }
+    },
+    toMusic() {
+      this.$router.push('/music')
     }
   }
 }

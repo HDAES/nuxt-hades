@@ -1,3 +1,9 @@
+<!--
+ * @Author: HADES
+ * @Date: 2019-07-30 11:10:46
+ * @LastEditTime: 2019-08-21 14:20:40
+ * @Description:
+ -->
 <template>
   <div class="about">
     <div class="avatar">
@@ -27,7 +33,7 @@ import Me from '@/components/hades/about/me'
 import Friend from '@/components/hades/about/friend'
 import Contacts from '@/components/hades/about/contacts'
 export default {
-  layout: 'hades-full',
+  layout: 'hades',
   components: { Me, Friend, Contacts },
   data() {
     return {
@@ -40,7 +46,6 @@ export default {
 
 <style lang="scss" soped>
 .about{
-    padding-top: 80px;
     width: var(--view-container);
     margin: 0 auto;
     .avatar{
