@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:17:05
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 23:25:51
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-22 15:18:46
  * @Description:
  -->
 <template>
@@ -22,12 +22,12 @@ export default {
     const articleData = await $axios.get('/api/hades/articlelist')
     const sortData = await $axios.get('/api/hades/sort')
     const articlelist = articleData.filter((item) => {
-      if (item.pc_sort === parseInt(route.params.name)) {
+      if (item.name === route.params.name) {
         return item
       }
     })
     const sort = sortData.filter((item) => {
-      if (item.pc_sort_id === parseInt(route.params.name)) {
+      if (item.name === route.params.name) {
         return item
       }
     })

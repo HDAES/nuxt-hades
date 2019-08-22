@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-14 19:12:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-21 16:51:41
+ * @LastEditTime: 2019-08-22 10:30:42
  * @Description:
  -->
 <template>
@@ -18,10 +18,11 @@
             <my-tag />
           </div>
         </div>
+
+        <no-ssr>
+          <aplayer :audio="audio" :lrc-type="1" :class="fixed?'':'audio'" :fixed="fixed" :mini="false" />
+        </no-ssr>
       </div>
-      <no-ssr>
-        <aplayer :audio="audio" :lrc-type="3" :class="fixed?'':'audio'" :fixed="fixed" :mini="false" />
-      </no-ssr>
     </div>
     <sider-bar />
     <my-footer />
@@ -129,12 +130,12 @@ export default {
         width: 1200px;
      }
   }
-  .audio{
+   .audio{
     position: absolute;
-    bottom: 0;
-    width: 1200px;
-    left: 50%;
-    transform: translateX(-50%)
+    top: 80px;
+    right: 0;
+    width: 400px;
+
   }
 }
 

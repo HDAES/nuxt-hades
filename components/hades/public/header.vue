@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-21 14:13:30
+ * @LastEditTime: 2019-08-22 15:08:16
  * @Description:
  -->
 <template>
@@ -9,7 +9,7 @@
     <div class="wrapper">
       <nuxt-link to="/">
         <img src="~static/image/logo.png" alt="logo">
-        <span class="logo-text">hades.me</span>
+        <span class="logo-text">xl686.com</span>
       </nuxt-link>
       <div class="tabs">
         <nuxt-link v-for="(item,index) in tabs" :key="index" :to="item.index">
