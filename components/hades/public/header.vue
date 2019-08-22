@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-22 15:08:16
+ * @LastEditTime: 2019-08-22 16:06:29
  * @Description:
  -->
 <template>
@@ -17,7 +17,7 @@
         </nuxt-link>
       </div>
       <div class="search">
-        <input type="text" placeholder="搜索文章" name>
+        <input v-model="keywords" type="text" placeholder="搜索文章" @keyup.enter="submit">
       </div>
     </div>
   </header>
@@ -41,16 +41,27 @@ export default {
           name: '关于'
         },
         {
+          index: '/music',
+          name: '音乐'
+        },
+        {
           index: '/admin/login',
           name: '后台管理系统'
         }
       ],
-      route: this.$route.path
+      route: this.$route.path,
+      keywords: ''
     }
   },
   watch: {
     $route(to, from) {
       this.route = to.path
+    }
+  },
+  methods: {
+    submit() {
+      console.log(this.keywords)
+      this.$router.push('/search?keywords=' + this.keywords)
     }
   }
 }

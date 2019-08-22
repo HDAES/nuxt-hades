@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-21 13:54:32
+ * @LastEditTime: 2019-08-22 17:42:11
  * @Description:
  */
 
@@ -19,7 +19,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_1098415_gqj1uzp0on.css' },
+      { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_1098415_r1xb63h27s.css' },
       { rel: 'stylesheet', href: 'https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css' }
     ],
     script: [
@@ -36,7 +36,8 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '@/assets/css/reset.css',
-    '@/assets/css/main.css'
+    '@/assets/css/main.css',
+    'vue-dplayer/dist/vue-dplayer.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -49,7 +50,8 @@ module.exports = {
     { src: '@/plugins/axios', srr: false },
     { src: '@/plugins/bus', srr: false },
     { src: '@/plugins/localStorage', srr: false },
-    { src: '@/plugins/APlayer', mode: 'client' }
+    { src: '@/plugins/APlayer', mode: 'client' },
+    { src: '@/plugins/vue-dplayer', mode: 'client' }
 
   ],
   /*

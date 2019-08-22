@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-14 19:12:42
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-20 21:28:58
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-22 15:45:20
  * @Description:
  -->
 <template>
@@ -45,7 +45,7 @@ export default {
       defaultOpen: 'preview',
       toolbarsFlag: false,
       boxShadow: false,
-      handbook: '#### how to use mavonEditor in nuxt.js',
+      handbook: '',
       articleData: ''
     }
   },

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:17:05
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 23:26:12
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-22 16:14:09
  * @Description:
  -->
 <template>
@@ -13,7 +13,7 @@
       {{ sort.sort[0].name }}
     </div>
     <div class="totol">
-      共搜索到{{ sort.list.length }}篇文章
+      共搜索到 <span>{{ sort.list.length }}</span>篇文章
     </div>
   </div>
 </template>
@@ -72,6 +72,11 @@ export default {
         font-size: 1rem;
         font-size: .8rem;
         color: var(--header-background-color);
+        span{
+          color: red;
+          padding: 0 5px;
+          font-weight: bold;
+        }
     }
 }
 .category-header:hover .mask {

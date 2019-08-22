@@ -1,3 +1,9 @@
+<!--
+ * @Author: HADES
+ * @Date: 2019-07-30 11:10:46
+ * @LastEditTime: 2019-08-22 15:44:16
+ * @Description:
+ -->
 <template>
   <!-- 底部 -->
   <footer>
@@ -11,7 +17,7 @@
     </div>
     <div class="support">
       <span>Powered by</span>
-      <a href="https://cn.vuejs.org/">vuejs</a>
+      <a href="https://cn.vuejs.org/">Nuxt.Js</a>
       <span style="padding-left:5px">Thinks for </span>
       <a href="https://jooger.me/">jooger.me</a>
       <span>design</span>

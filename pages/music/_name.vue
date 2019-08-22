@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-21 11:48:25
- * @LastEditTime: 2019-08-22 14:40:57
+ * @LastEditTime: 2019-08-22 15:43:44
  * @Description:    音乐页面
  -->
 <template>
@@ -61,6 +61,12 @@
           </li>
         </ul>
       </div>
+    </div>
+    <div class="copyright">
+      所有音乐版权归
+      <a href="https://music.163.com/" target="_blank">
+        网易云音乐
+      </a>
     </div>
   </div>
 </template>
@@ -221,6 +227,12 @@ export default {
       ul::-webkit-scrollbar {display:none}
     }
   }
+}
+
+.copyright{
+  position: absolute;
+  bottom: -200px;
+  right: 0;
 }
 
 .load-container {
