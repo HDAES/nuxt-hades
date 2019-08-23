@@ -56,9 +56,8 @@ export default {
       if (to.path === '/about' || to.path === '/music') {
         // 全屏
         console.log('full')
-        if (to.path === '/music') {
-          this.fixed = false
-        }
+
+        this.fixed = false
       } else {
         this.fixed = true
       }
@@ -69,12 +68,8 @@ export default {
     // console.log(this.$route.path)
     if (this.$route.path === '/about' || this.$route.path === '/music') {
       // 全屏
-      this.full = true
-      if (this.$route.path === '/music') {
-        this.fixed = false
-      }
+      this.fixed = false
     } else {
-      this.full = false
       this.fixed = true
     }
   },
