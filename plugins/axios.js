@@ -1,7 +1,7 @@
 /*
  * @Author: HADES
  * @Date: 2019-07-30 11:10:46
- * @LastEditTime: 2019-08-28 22:36:30
+ * @LastEditTime: 2019-08-28 22:53:24
  * @Description:
  */
 
@@ -13,8 +13,8 @@ export default function ({ $axios, redirect, store }) {
   ])
 
   if (process.env.NODE_ENV === 'development') {
-    // $axios.defaults.baseURL = 'https://blog.xl686.com'
-    $axios.defaults.baseURL = 'http://localhost:3001'
+    $axios.defaults.baseURL = 'https://blog.xl686.com'
+    // $axios.defaults.baseURL = 'http://localhost:3001'
   } else if (process.env.NODE_ENV === 'production') {
     $axios.defaults.baseURL = 'https://blog.xl686.com'
   }

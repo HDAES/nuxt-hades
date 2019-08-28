@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-28 22:17:07
+ * @LastEditTime: 2019-08-28 22:52:19
  * @Description:
  -->
 <template>
@@ -65,7 +65,7 @@ export default {
     },
     to(e) {
       console.log(e)
-      if (e === '/admin/login') {
+      if (e === '/admin/login' && this.storage.get('TOKEN')) {
         this.$router.push('/admin/system')
         return true
       }
