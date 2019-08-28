@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-22 17:42:11
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-28 21:31:59
  * @Description:
  */
 
@@ -23,7 +23,6 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css' }
     ],
     script: [
-      { src: 'http://webapi.amap.com/maps?v=1.4.4&key=e5e77918efad8f49e124c3433561c0b7' }
     ]
   },
   /*
@@ -36,8 +35,7 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '@/assets/css/reset.css',
-    '@/assets/css/main.css',
-    'vue-dplayer/dist/vue-dplayer.css'
+    '@/assets/css/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -50,9 +48,7 @@ module.exports = {
     { src: '@/plugins/axios', srr: false },
     { src: '@/plugins/bus', srr: false },
     { src: '@/plugins/localStorage', srr: false },
-    { src: '@/plugins/APlayer', mode: 'client' },
-    { src: '@/plugins/vue-dplayer', mode: 'client' }
-
+    { src: '@/plugins/APlayer', mode: 'client' }
   ],
   /*
   ** Nuxt.js modules

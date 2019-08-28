@@ -1,12 +1,12 @@
 <!--
  * @Date: 2019-07-26 23:17:05
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-28 16:18:09
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-28 21:05:51
  * @Description:
  -->
 <template>
   <div class="admin-login">
-    <background class="bg" />
+    <!-- <background class="bg" /> -->
     <div class="login-box">
       <nuxt-link class="toIndex" to="/">
         <i class="el-icon-back" />
@@ -50,10 +50,10 @@
   </div>
 </template>
 <script>
-import Background from '@/components/common/background'
+// import Background from '@/components/common/background'
 import api from '@/static/api'
 export default {
-  components: { Background },
+  components: { },
   data() {
     return {
       userInfo: {
@@ -70,21 +70,6 @@ export default {
       Qcode: '', // 二维码地址
       scanSuccess: '',
       time: 60
-    }
-  },
-  mounted() {
-    if (this.storage.get('TOKEN')) {
-      const _this = this
-      this.$message({
-        message: '请以登陆,3S后跳转。',
-        type: 'success',
-        duration: 3000,
-        onClose: function () {
-          _this.$router.push('/admin/system')
-        }
-      })
-    } else {
-      console.log('先登录')
     }
   },
   methods: {

@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-13 14:32:04
- * @LastEditTime: 2019-08-19 21:22:29
+ * @LastEditTime: 2019-08-28 22:10:54
  * @Description:    pc端栏目管理
  -->
 <template>
@@ -86,7 +86,7 @@ export default {
       if (res.code === -1) {
         console.log(res.msg)
       } else {
-        this.tabsForm.background = res.msg
+        this.tabsForm.background = res.data
       }
       console.log(res)
     },

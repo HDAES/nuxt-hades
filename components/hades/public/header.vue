@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-31 22:19:50
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-22 16:06:29
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-28 22:17:07
  * @Description:
  -->
 <template>
@@ -12,9 +12,9 @@
         <span class="logo-text">xl686.com</span>
       </nuxt-link>
       <div class="tabs">
-        <nuxt-link v-for="(item,index) in tabs" :key="index" :to="item.index">
+        <a v-for="(item,index) in tabs" :key="index" href="javascript:void(0)" @click="to(item.index)">
           <span :class="route == item.index?'tabs_active':''">{{ item.name }}</span>
-        </nuxt-link>
+        </a>
       </div>
       <div class="search">
         <input v-model="keywords" type="text" placeholder="搜索文章" @keyup.enter="submit">
@@ -62,6 +62,14 @@ export default {
     submit() {
       console.log(this.keywords)
       this.$router.push('/search?keywords=' + this.keywords)
+    },
+    to(e) {
+      console.log(e)
+      if (e === '/admin/login') {
+        this.$router.push('/admin/system')
+        return true
+      }
+      this.$router.push(e)
     }
   }
 }

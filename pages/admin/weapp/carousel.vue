@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-08-19 21:13:26
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 21:31:53
+ * @LastEditTime: 2019-08-28 22:10:09
  * @Description:
  -->
 <template>
@@ -103,7 +103,7 @@ export default {
       if (res.code === -1) {
         console.log(res.msg)
       } else {
-        this.imageUrl = res.msg
+        this.imageUrl = res.data
       }
       console.log(res)
     }
