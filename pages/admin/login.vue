@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-07-26 23:17:05
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-20 23:43:25
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-28 16:18:09
  * @Description:
  -->
 <template>
@@ -93,6 +93,7 @@ export default {
         if (valid) {
           this.$axios.post(api.login, this.userInfo).then(
             (res) => {
+              console.log(res)
               if (res.code === 200) {
                 this.storage.set('TOKEN', res.token)
                 this.$router.push('/admin/system')
