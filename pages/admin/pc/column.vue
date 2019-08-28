@@ -1,7 +1,7 @@
 <!--
  * @Author: HADES
  * @Date: 2019-08-13 14:32:04
- * @LastEditTime: 2019-08-28 22:10:54
+ * @LastEditTime: 2019-08-28 22:35:21
  * @Description:    pc端栏目管理
  -->
 <template>
@@ -29,7 +29,7 @@
               <br>
               <el-upload
                 id="upload"
-                action="http://localhost:3001/api/admin/wechat/upload"
+                action="https://blog.xl686.com/api/admin/wechat/upload"
                 :headers="{
                   'enctype':'multipart/form-data'
                 }"
