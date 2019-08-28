@@ -1,12 +1,12 @@
 <!--
  * @Date: 2019-07-26 23:17:05
  * @LastEditors: HADES
- * @LastEditTime: 2019-08-28 21:05:51
+ * @LastEditTime: 2019-08-28 22:57:45
  * @Description:
  -->
 <template>
   <div class="admin-login">
-    <!-- <background class="bg" /> -->
+    <background class="bg" />
     <div class="login-box">
       <nuxt-link class="toIndex" to="/">
         <i class="el-icon-back" />
@@ -50,10 +50,10 @@
   </div>
 </template>
 <script>
-// import Background from '@/components/common/background'
+import Background from '@/components/common/background'
 import api from '@/static/api'
 export default {
-  components: { },
+  components: { Background },
   data() {
     return {
       userInfo: {
