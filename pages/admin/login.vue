@@ -73,19 +73,7 @@ export default {
     }
   },
   mounted() {
-    if (this.storage.get('TOKEN')) {
-      const _this = this
-      this.$message({
-        message: '请以登陆,3S后跳转。',
-        type: 'success',
-        duration: 3000,
-        onClose: function () {
-          _this.$router.push('/admin/system')
-        }
-      })
-    } else {
-      console.log('先登录')
-    }
+
   },
   methods: {
     login(userInfo) {

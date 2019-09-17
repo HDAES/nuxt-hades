@@ -1,3 +1,9 @@
+<!--
+ * @Author: HADES
+ * @Date: 2019-08-16 11:10:56
+ * @LastEditTime: 2019-09-17 17:14:36
+ * @Description:
+ -->
 <template>
   <div class="say">
     <div class="say-contorl">
@@ -114,6 +120,8 @@ export default {
         author: this.newAuthor
       }
       await this.$axios.post(api.addSaying, options)
+      this.dialogAdd = false
+      this.$message.error('添加成功！！！')
     },
     addBtn() {
       this.newSaying = ''

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-08-19 21:13:26
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 21:31:53
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-17 17:26:15
  * @Description:
  -->
 <template>
@@ -20,7 +20,7 @@
               <br>
               <el-upload
                 id="upload"
-                action="http://localhost:3001/api/admin/wechat/upload"
+                action="http://localhost:7001/uploads"
                 :headers="{
                   'enctype':'multipart/form-data'
                 }"
@@ -103,7 +103,7 @@ export default {
       if (res.code === -1) {
         console.log(res.msg)
       } else {
-        this.imageUrl = res.msg
+        this.imageUrl = res.data
       }
       console.log(res)
     }

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2019-08-18 16:03:35
- * @LastEditors: HADES
- * @LastEditTime: 2019-08-19 21:22:33
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-17 16:41:21
  * @Description:
  -->
 <template>
@@ -76,6 +76,7 @@ export default {
     // 获取登录者的ip地址和城市
     async getIp() {
       await this.$axios.get(api.getLoginInfo).then((res) => {
+        // console.log(res)
         this.Ip = res
       })
     }
