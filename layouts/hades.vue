@@ -1,12 +1,12 @@
 <!--
  * @Date: 2019-07-14 19:12:42
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-22 10:30:42
+ * @LastEditors: HADES
+ * @LastEditTime: 2019-08-28 22:58:07
  * @Description:
  -->
 <template>
   <div class="hades" :class="$store.state.theme.theme +'-theme'">
-    <!-- <background /> -->
+    <background />
     <my-header />
     <div class="wrapper" :style="{minHeight:clientHeight- 200 +'px'}">
       <div class="main">
@@ -36,10 +36,10 @@ import SiderBar from '@/components/hades/public/siderbar'
 import HotArticle from '@/components/hades/index/hotarticle'
 import MyTag from '@/components/hades/index/tag'
 import SortList from '@/components/hades/index/sortlist'
-// import Background from '@/components/common/background'
+import Background from '@/components/common/background'
 export default {
   components: {
-    MyHeader, MyFooter, SiderBar, HotArticle, MyTag, SortList
+    MyHeader, MyFooter, SiderBar, HotArticle, MyTag, SortList, Background
   },
   data() {
     return {
@@ -104,9 +104,9 @@ export default {
 
 <style lang="scss" scoped>
  @import '@/assets/css/theme.css';
- .hades{
-    background-color: var(--content-color);
- }
+//  .hades{
+//     background-color: var(--content-color);
+//  }
 .wrapper{
   position: relative;
   .main{
