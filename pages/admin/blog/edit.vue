@@ -104,7 +104,7 @@ export default {
         this.$message.error('不能为空')
       } else if (this.Is_insert) {
         // 新增
-        this.$axiox.post(api.insertBlog, { id: this.articleId, content: this.article })
+        this.$axios.post(api.insertBlog, { id: this.articleId, content: this.article })
       } else {
         this.$axios.post(api.upDataBlog, { id: this.articleId, content: this.article })
       }
