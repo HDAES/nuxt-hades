@@ -106,6 +106,7 @@ export default {
       this.scanSuccess = ''
       // 获取二维码
       this.$axios.get(api.getLoginQcode).then((res) => {
+        
         this.Qcode = res.url
         const token = res.token
         const timeout = window.setInterval(() => {

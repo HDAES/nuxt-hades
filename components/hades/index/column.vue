@@ -57,6 +57,9 @@ export default {
         height: 110px;
         border-radius: 5px;
       }
+      img{
+        object-fit: cover;
+      }
       .mask {
         position: absolute;
         top: 0;

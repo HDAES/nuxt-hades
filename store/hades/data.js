@@ -10,7 +10,7 @@ const state = () => ({
   sort: [],
   articlelist: [],
   say: [],
-  audio: [ {
+  audio: [{
     name: '以父之名',
     artist: '周杰伦',
     url: 'http://qiniu.xl686.com/yfzm.mp3',

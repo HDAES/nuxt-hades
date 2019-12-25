@@ -13,8 +13,8 @@ export default function ({ $axios, redirect, store }) {
   ])
 
   if (process.env.NODE_ENV === 'development') {
-    $axios.defaults.baseURL = 'https://blog.xl686.com'
-    // $axios.defaults.baseURL = 'http://localhost:3001'
+    // $axios.defaults.baseURL = 'https://blog.xl686.com'
+    $axios.defaults.baseURL = 'http://localhost:3001'
   } else if (process.env.NODE_ENV === 'production') {
     $axios.defaults.baseURL = 'https://blog.xl686.com'
   }
